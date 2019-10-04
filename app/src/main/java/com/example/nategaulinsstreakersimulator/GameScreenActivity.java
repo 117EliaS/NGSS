@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -14,12 +15,24 @@ public class GameScreenActivity extends AppCompatActivity {
     private int milsecs = 0;
     private boolean running = false;
 
+    // Views
+    private NateView nateView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
+
+        // Timer shit
         runTimer();
         startTimer();
+
+        // Views
+        nateView = new NateView(this);
+        setContentView(nateView);
+
+        ImageView img = findViewById(R.id.);
+        
     }
 
     // Start stopwatch when the game starts
