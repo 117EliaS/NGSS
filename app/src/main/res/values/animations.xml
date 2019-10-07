@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <animation-list android:id="@+id/nate_down" android:oneshot="false">
-        <item android:drawable="@drawable/nate_down_1" android:duration="100"/>
-        <item android:drawable="@drawable/nate_down_2" android:duration="100"/>
-    </animation-list>
-</resources>

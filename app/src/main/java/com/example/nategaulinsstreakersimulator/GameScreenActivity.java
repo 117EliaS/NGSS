@@ -2,6 +2,7 @@ package com.example.nategaulinsstreakersimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,7 +17,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private boolean running = false;
 
     // Views
-    private NateView nateView;
+   // private NateView nateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,15 @@ public class GameScreenActivity extends AppCompatActivity {
         startTimer();
 
         // Views
-        nateView = new NateView(this);
-        setContentView(nateView);
+      //  nateView = new NateView(this);
+      //  setContentView(nateView);
 
-        ImageView img = findViewById(R.id.);
+        ImageView img = findViewById(R.id.playerImageView);
+        img.setBackgroundResource(R.drawable.player_animation_up);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
         
     }
 
@@ -91,4 +97,6 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
     }
+
+
 }

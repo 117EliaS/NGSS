@@ -15,7 +15,7 @@ public class NateView extends View {
     public NateView(Context context){
         super(context);
 
-        nate = BitmapFactory.decodeResource(getResources(), R.);
+       // nate = BitmapFactory.decodeResource(getResources(), R.);
     }
 
     @Override
