@@ -16,8 +16,6 @@ public class GameScreenActivity extends AppCompatActivity {
     private int milsecs = 0;
     private boolean running = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +25,6 @@ public class GameScreenActivity extends AppCompatActivity {
         runTimer();
         startTimer();
 
-        //Initial animation for player
         ImageView img = findViewById(R.id.playerImageView);
         img.setBackgroundResource(R.drawable.player_animation_up);
 
