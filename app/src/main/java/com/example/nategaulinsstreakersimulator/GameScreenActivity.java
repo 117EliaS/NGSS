@@ -16,8 +16,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private int milsecs = 0;
     private boolean running = false;
 
-    // Views
-   // private NateView nateView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +27,7 @@ public class GameScreenActivity extends AppCompatActivity {
         runTimer();
         startTimer();
 
-        // Views
-      //  nateView = new NateView(this);
-      //  setContentView(nateView);
-
+        //Initial animation for player
         ImageView img = findViewById(R.id.playerImageView);
         img.setBackgroundResource(R.drawable.player_animation_up);
 
