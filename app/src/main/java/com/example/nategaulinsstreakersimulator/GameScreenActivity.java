@@ -2,6 +2,7 @@ package com.example.nategaulinsstreakersimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,13 +26,213 @@ public class GameScreenActivity extends AppCompatActivity {
         runTimer();
         startTimer();
 
+        //Beginning animations
+        ImageView player = findViewById(R.id.playerImageView);
+        player.setBackgroundResource(R.drawable.player_animation_up);
+
+        AnimationDrawable playerFrameAnimation = (AnimationDrawable) player.getBackground();
+
+        playerFrameAnimation.start();
+
+        ImageView guard = findViewById(R.id.guardImageView);
+        guard.setBackgroundResource(R.drawable.guard_animation_up);
+
+        AnimationDrawable guardFrameAnimation = (AnimationDrawable) guard.getBackground();
+
+        guardFrameAnimation.start();
+
+        ImageView football = findViewById(R.id.footballImageView);
+        football.setBackgroundResource(R.drawable.football_animation_up);
+
+        AnimationDrawable footballFrameAnimation = (AnimationDrawable) football.getBackground();
+
+        footballFrameAnimation.start();
+
+
+        //hitBoxes for the imageViews
+        ImageView playerView = findViewById(R.id.playerImageView);
+
+        ImageView guardView = findViewById(R.id.guardImageView);
+
+        ImageView footballView = findViewById(R.id.footballImageView);
+
+        Rect playerRect = new Rect();
+        Rect guardRect = new Rect();
+        Rect footballRect = new Rect();
+
+        //Use:
+        // Rect.intersects(rect1,rect2){
+        //
+        // insert method here
+        // }
+
+        
+    }
+
+
+    //Change animations 
+    public void devChangeAllUp(View v){
+
+        playerChangeAnimUp(v);
+        guardChangeAnimUp(v);
+        footballChangeAnimUp(v);
+    }
+
+    public void devChangeAllDown(View v){
+
+        playerChangeAnimDown(v);
+        guardChangeAnimDown(v);
+        footballChangeAnimDown(v);
+    }
+
+    public void devChangeAllLeft(View v){
+
+        playerChangeAnimLeft(v);
+        guardChangeAnimLeft(v);
+        footballChangeAnimLeft(v);
+    }
+
+    public void devChangeAllRight(View v){
+
+        playerChangeAnimRight(v);
+        guardChangeAnimRight(v);
+        footballChangeAnimRight(v);
+    }
+
+
+    //Changes animations for the player
+    public void playerChangeAnimUp(View v){
+
         ImageView img = findViewById(R.id.playerImageView);
         img.setBackgroundResource(R.drawable.player_animation_up);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
         frameAnimation.start();
-        
+
+    }
+
+    public void playerChangeAnimDown(View v){
+
+        ImageView img = findViewById(R.id.playerImageView);
+        img.setBackgroundResource(R.drawable.player_animation_down);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void playerChangeAnimLeft(View v){
+
+        ImageView img = findViewById(R.id.playerImageView);
+        img.setBackgroundResource(R.drawable.player_animation_left);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void playerChangeAnimRight(View v){
+
+        ImageView img = findViewById(R.id.playerImageView);
+        img.setBackgroundResource(R.drawable.player_animation_right);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    //Changes the animations for the guard character
+    public void guardChangeAnimUp(View v){
+
+        ImageView img = findViewById(R.id.guardImageView);
+        img.setBackgroundResource(R.drawable.guard_animation_up);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void guardChangeAnimDown(View v){
+
+        ImageView img = findViewById(R.id.guardImageView);
+        img.setBackgroundResource(R.drawable.guard_animation_down);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void guardChangeAnimLeft(View v){
+
+        ImageView img = findViewById(R.id.guardImageView);
+        img.setBackgroundResource(R.drawable.guard_animation_left);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void guardChangeAnimRight(View v){
+
+        ImageView img = findViewById(R.id.guardImageView);
+        img.setBackgroundResource(R.drawable.guard_animation_right);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    //Changes the animations for the football character
+    public void footballChangeAnimUp(View v){
+
+        ImageView img = findViewById(R.id.footballImageView);
+        img.setBackgroundResource(R.drawable.football_animation_up);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void footballChangeAnimDown(View v){
+
+        ImageView img = findViewById(R.id.footballImageView);
+        img.setBackgroundResource(R.drawable.football_animation_down);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void footballChangeAnimLeft(View v){
+
+        ImageView img = findViewById(R.id.footballImageView);
+        img.setBackgroundResource(R.drawable.football_animation_left);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
+    }
+
+    public void footballChangeAnimRight(View v){
+
+        ImageView img = findViewById(R.id.footballImageView);
+        img.setBackgroundResource(R.drawable.football_animation_right);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+        frameAnimation.start();
+
     }
 
     // Start stopwatch when the game starts
