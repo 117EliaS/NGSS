@@ -2,4 +2,8 @@
     <string name="app_name">NateGaulinsStreakerSimulator</string>
     <string name="Menu_Button">Start Game</string>
     <string name="devStop">Stop Timer</string>
+    <string name="buttonUp">Up</string>
+    <string name="buttonDown">Down</string>
+    <string name="buttonLeft">Left</string>
+    <string name="buttonRight">Right</string>
 </resources>
