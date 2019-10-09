@@ -1,11 +1,16 @@
 package com.example.nategaulinsstreakersimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +21,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private int milsecs = 0;
     private boolean running = false;
+
+    private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +73,21 @@ public class GameScreenActivity extends AppCompatActivity {
         // insert method here
         // }
 
+
+
+        fixBackground();
         
+    }
+    //Busted, dont touch
+    public void fixBackground(){
+
+        BitmapDrawable field = (BitmapDrawable) getDrawable(R.drawable.field);
+        Bitmap fieldFixed = Bitmap.createScaledBitmap(field.getBitmap(),1920,1080,true);
+        Drawable fieldDone = new BitmapDrawable(getResources(), fieldFixed);
+        ConstraintLayout gameScreen = (ConstraintLayout) findViewById(R.id.gameScreen);
+
+        gameScreen.setBackground(fieldDone);
+
     }
 
 
@@ -234,6 +255,8 @@ public class GameScreenActivity extends AppCompatActivity {
         frameAnimation.start();
 
     }
+
+    public void moevPlayer(View v){}
 
     // Start stopwatch when the game starts
     public void startTimer(){
