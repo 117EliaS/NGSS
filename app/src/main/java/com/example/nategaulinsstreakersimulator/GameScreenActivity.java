@@ -35,14 +35,14 @@ public class GameScreenActivity extends AppCompatActivity {
         playerFrameAnimation.start();
 
         ImageView guard = findViewById(R.id.guardImageView);
-        guard.setBackgroundResource(R.drawable.guard_animation_up);
+        guard.setBackgroundResource(R.drawable.cop_animation_up);
 
         AnimationDrawable guardFrameAnimation = (AnimationDrawable) guard.getBackground();
 
         guardFrameAnimation.start();
 
         ImageView football = findViewById(R.id.footballImageView);
-        football.setBackgroundResource(R.drawable.football_animation_up);
+        football.setBackgroundResource(R.drawable.footballer_animation_up);
 
         AnimationDrawable footballFrameAnimation = (AnimationDrawable) football.getBackground();
 
@@ -149,7 +149,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void guardChangeAnimUp(View v){
 
         ImageView img = findViewById(R.id.guardImageView);
-        img.setBackgroundResource(R.drawable.guard_animation_up);
+        img.setBackgroundResource(R.drawable.cop_animation_up);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -160,7 +160,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void guardChangeAnimDown(View v){
 
         ImageView img = findViewById(R.id.guardImageView);
-        img.setBackgroundResource(R.drawable.guard_animation_down);
+        img.setBackgroundResource(R.drawable.cop_animation_down);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -171,7 +171,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void guardChangeAnimLeft(View v){
 
         ImageView img = findViewById(R.id.guardImageView);
-        img.setBackgroundResource(R.drawable.guard_animation_left);
+        img.setBackgroundResource(R.drawable.cop_animation_left);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -182,7 +182,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void guardChangeAnimRight(View v){
 
         ImageView img = findViewById(R.id.guardImageView);
-        img.setBackgroundResource(R.drawable.guard_animation_right);
+        img.setBackgroundResource(R.drawable.cop_animation_right);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -194,7 +194,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void footballChangeAnimUp(View v){
 
         ImageView img = findViewById(R.id.footballImageView);
-        img.setBackgroundResource(R.drawable.football_animation_up);
+        img.setBackgroundResource(R.drawable.footballer_animation_up);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -205,7 +205,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void footballChangeAnimDown(View v){
 
         ImageView img = findViewById(R.id.footballImageView);
-        img.setBackgroundResource(R.drawable.football_animation_down);
+        img.setBackgroundResource(R.drawable.footballer_animation_down);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -216,7 +216,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void footballChangeAnimLeft(View v){
 
         ImageView img = findViewById(R.id.footballImageView);
-        img.setBackgroundResource(R.drawable.football_animation_left);
+        img.setBackgroundResource(R.drawable.footballer_animation_left);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
@@ -227,7 +227,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void footballChangeAnimRight(View v){
 
         ImageView img = findViewById(R.id.footballImageView);
-        img.setBackgroundResource(R.drawable.football_animation_right);
+        img.setBackgroundResource(R.drawable.footballer_animation_right);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
 
