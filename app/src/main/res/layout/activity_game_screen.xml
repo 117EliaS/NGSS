@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameScreenActivity"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@drawable/field"
+    android:id="@+id/gameScreen">
 
     <TextView
         android:id="@+id/time_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@color/White"
         android:text="00:00:00"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="56sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,11 +42,11 @@
 
     <Button
         android:id="@+id/buttonUp"
-        android:layout_width="101dp"
-        android:layout_height="58dp"
-        android:background="@drawable/menubutton"
+        android:layout_width="70dp"
+        android:layout_height="54dp"
+        android:background="@drawable/arrow_up"
         android:onClick="devChangeAllUp"
-        android:text="@string/buttonUp"
+        android:text=""
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
