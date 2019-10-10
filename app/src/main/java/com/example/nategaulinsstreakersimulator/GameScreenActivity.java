@@ -21,6 +21,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private int milsecs = 0;
     private boolean running = false;
+    private boolean runningPlayer = false;
+
 
     private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
 
@@ -32,6 +34,9 @@ public class GameScreenActivity extends AppCompatActivity {
         // Timer shit
         runTimer();
         startTimer();
+
+
+
 
         //Beginning animations
         ImageView player = findViewById(R.id.playerImageView);
@@ -76,6 +81,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         fixBackground();
+
+        movePlayer();
         
     }
     //Busted, dont touch
@@ -91,10 +98,120 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
 
-    //Change animations 
+
+    public void changePlayerDirUp(View v){
+
+        playerChangeAnimUp();
+        stopRunningPlayer();
+        setPlayerDirection(0);
+        startRunningPlayer();
+
+
+
+
+    }
+    public void changePlayerDirDown(View v){
+
+        playerChangeAnimDown(v);
+        stopRunningPlayer();
+        setPlayerDirection(1);
+        startRunningPlayer();
+
+
+
+    }
+    public void changePlayerDirLeft(View v){
+
+        playerChangeAnimLeft(v);
+        stopRunningPlayer();
+        setPlayerDirection(2);
+        startRunningPlayer();
+
+
+
+    }
+    public void changePlayerDirRight(View v){
+
+        playerChangeAnimRight(v);
+        stopRunningPlayer();
+        setPlayerDirection(3);
+        startRunningPlayer();
+
+
+
+    }
+    public void startRunningPlayer(){
+
+        runningPlayer = true;
+    }
+
+    public void stopRunningPlayer(){
+
+        runningPlayer = false;
+    }
+
+    public void movePlayer(){
+
+        final ImageView player = (ImageView) findViewById(R.id.playerImageView);
+
+            final Handler handler = new Handler();
+            handler.post(new Runnable(){
+                             @Override
+                             public void run() {
+
+                                 if(playerDirection == 0) {
+                                     int posx = (int) player.getX();
+                                     int posy = (int) player.getY();
+
+
+                                     if (runningPlayer) {
+                                         player.setY(posy - 1);
+                                     }
+                                 }
+                                 if(playerDirection == 1){
+                                     int posx = (int)player.getX();
+                                     int posy = (int)player.getY();
+
+
+
+
+
+                                     if(runningPlayer){
+                                         player.setY(posy + 1);
+                                     }}
+                                 if(playerDirection == 2){
+                                     int posx = (int)player.getX();
+                                     int posy = (int)player.getY();
+
+
+
+
+
+                                     if(runningPlayer){
+                                         player.setX(posx - 1);
+                                     }
+                                 }
+                                 if(playerDirection == 3){
+                                     int posx = (int)player.getX();
+                                     int posy = (int)player.getY();
+
+
+
+
+
+                                     if(runningPlayer){
+                                         player.setX(posx + 1);
+                                     }
+                                 }
+                                 handler.postDelayed(this ,2);
+        }
+        });
+    }
+
+    //Change animations (DEVELOPER)
     public void devChangeAllUp(View v){
 
-        playerChangeAnimUp(v);
+        playerChangeAnimUp();
         guardChangeAnimUp(v);
         footballChangeAnimUp(v);
     }
@@ -122,7 +239,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
     //Changes animations for the player
-    public void playerChangeAnimUp(View v){
+    public void playerChangeAnimUp(){
 
         ImageView img = findViewById(R.id.playerImageView);
         img.setBackgroundResource(R.drawable.player_animation_up);
@@ -256,7 +373,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    public void moevPlayer(View v){}
+
 
     // Start stopwatch when the game starts
     public void startTimer(){
@@ -313,6 +430,10 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void setPlayerDirection(int playerDirection) {
+        this.playerDirection = playerDirection;
     }
 
 
