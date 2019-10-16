@@ -16,6 +16,7 @@ public class ScreenView extends View {
     RectF mRectF;
     int mPadding;
     Bitmap bitmap;
+    Canvas canvas;
 
     public ScreenView(Context context){
         super(context);
