@@ -22,6 +22,10 @@ public class GameScreenActivity extends AppCompatActivity {
     private int milsecs = 0;
     private boolean running = false;
     private boolean runningPlayer = false;
+    private Rect playerRect;
+    private Rect guardRect;
+    private Rect footballRect;
+    private boolean gameOn = false;
 
 
     private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
@@ -68,9 +72,17 @@ public class GameScreenActivity extends AppCompatActivity {
 
         ImageView footballView = findViewById(R.id.footballImageView);
 
-        Rect playerRect = new Rect();
-        Rect guardRect = new Rect();
-        Rect footballRect = new Rect();
+
+
+        playerRect = new Rect();
+
+        guardRect = new Rect();
+
+        footballRect = new Rect();
+
+        playerView.getHitRect(playerRect);
+        guardView.getHitRect(guardRect);
+        footballView.getHitRect(footballRect);
 
         //Use:
         // Rect.intersects(rect1,rect2){
@@ -82,8 +94,13 @@ public class GameScreenActivity extends AppCompatActivity {
 
         fixBackground();
 
+        startRunningPlayer();
         movePlayer();
-        
+
+        gameOn = true;
+
+        checkCollision();
+
     }
     //Busted, dont touch
     public void fixBackground(){
@@ -97,6 +114,52 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
+    public void checkCollision(){
+
+        final ImageView playerView = findViewById(R.id.playerImageView);
+
+        final ImageView guardView = findViewById(R.id.guardImageView);
+
+        final ImageView footballView = findViewById(R.id.footballImageView);
+
+        if(gameOn = true) {
+            final Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+
+                    //playerRect.left = playerView.getLeft();
+                    //playerRect.top = playerView.getTop();
+                    //playerRect.right = playerView.getRight();
+                    //playerRect.bottom = playerView.getBottom();
+
+                    //guardRect.left = guardView.getLeft();
+                    //guardRect.top = guardView.getTop();
+                    //guardRect.right = guardView.getRight();
+                    //guardRect.bottom = guardView.getBottom();
+
+                    //footballRect.left = footballView.getLeft();
+                    //footballRect.top = footballView.getTop();
+                    //footballRect.right = footballView.getRight();
+                    //footballRect.bottom = footballView.getBottom();
+
+                    playerView.getHitRect(playerRect);
+                    guardView.getHitRect(guardRect);
+                    footballView.getHitRect(footballRect);
+
+                    if (Rect.intersects(playerRect, guardRect) || Rect.intersects(playerRect, footballRect)) {
+
+                        stopRunningPlayer();
+                        stopTimer();
+                        gameOn = false;
+                    }
+
+                    handler.postDelayed(this, 2);
+                }
+            });
+        }
+    }
 
 
     public void changePlayerDirUp(View v){
@@ -154,58 +217,52 @@ public class GameScreenActivity extends AppCompatActivity {
 
         final ImageView player = (ImageView) findViewById(R.id.playerImageView);
 
+        if(runningPlayer = true) {
             final Handler handler = new Handler();
-            handler.post(new Runnable(){
-                             @Override
-                             public void run() {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
 
-                                 if(playerDirection == 0) {
-                                     int posx = (int) player.getX();
-                                     int posy = (int) player.getY();
-
-
-                                     if (runningPlayer) {
-                                         player.setY(posy - 1);
-                                     }
-                                 }
-                                 if(playerDirection == 1){
-                                     int posx = (int)player.getX();
-                                     int posy = (int)player.getY();
+                    if (playerDirection == 0) {
+                        int posx = (int) player.getX();
+                        int posy = (int) player.getY();
 
 
+                        if (runningPlayer) {
+                            player.setY(posy - 1);
+                        }
+                    }
+                    if (playerDirection == 1) {
+                        int posx = (int) player.getX();
+                        int posy = (int) player.getY();
 
 
-
-                                     if(runningPlayer){
-                                         player.setY(posy + 1);
-                                     }}
-                                 if(playerDirection == 2){
-                                     int posx = (int)player.getX();
-                                     int posy = (int)player.getY();
-
-
+                        if (runningPlayer) {
+                            player.setY(posy + 1);
+                        }
+                    }
+                    if (playerDirection == 2) {
+                        int posx = (int) player.getX();
+                        int posy = (int) player.getY();
 
 
-
-                                     if(runningPlayer){
-                                         player.setX(posx - 1);
-                                     }
-                                 }
-                                 if(playerDirection == 3){
-                                     int posx = (int)player.getX();
-                                     int posy = (int)player.getY();
-
+                        if (runningPlayer) {
+                            player.setX(posx - 1);
+                        }
+                    }
+                    if (playerDirection == 3) {
+                        int posx = (int) player.getX();
+                        int posy = (int) player.getY();
 
 
-
-
-                                     if(runningPlayer){
-                                         player.setX(posx + 1);
-                                     }
-                                 }
-                                 handler.postDelayed(this ,2);
+                        if (runningPlayer) {
+                            player.setX(posx + 1);
+                        }
+                    }
+                    handler.postDelayed(this, 2);
+                }
+            });
         }
-        });
     }
 
     //Change animations (DEVELOPER)
@@ -384,7 +441,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
     // Stop stopwatch when the game ends
-    public void stopTimer(View v){
+    public void stopTimer(){
 
         running = false;
 
