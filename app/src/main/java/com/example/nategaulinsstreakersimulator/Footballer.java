@@ -11,7 +11,7 @@ public class Footballer {
     // Uses int values to represent the direction the entity is facing
     // None = 0, Up = 1, Right = 2, Down = 3, Left = 4
     private int direction;
-    ImageView hitbox
+    ImageView hitbox;
 
     public Footballer(int posX, int posY, int direction){
         this.posX = posX;
