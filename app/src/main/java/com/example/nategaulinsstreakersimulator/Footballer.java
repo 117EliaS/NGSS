@@ -1,5 +1,6 @@
 package com.example.nategaulinsstreakersimulator;
 
+import android.graphics.Rect;
 import android.widget.ImageView;
 
 public class Footballer {
@@ -11,9 +12,10 @@ public class Footballer {
     // Uses int values to represent the direction the entity is facing
     // None = 0, Up = 1, Right = 2, Down = 3, Left = 4
     private int direction;
-    ImageView hitbox
+    ImageView imageView;
+    Rect hitbox;
 
-    public Footballer(int posX, int posY, int direction){
+    public Footballer(int posX, int posY, ImageView imageView, int direction){
         this.posX = posX;
         this.posY = posY;
         if(direction > 0 && direction <= 4){
@@ -21,9 +23,14 @@ public class Footballer {
         } else {
             this.direction = 1;
         }
+
+        this.imageView = imageView;
+        this.hitbox = new Rect();
+
+        imageView.getHitRect(this.hitbox);
     }
 
-    public int getSpeed() {
+    public int getSPEED() {
         return SPEED;
     }
 
