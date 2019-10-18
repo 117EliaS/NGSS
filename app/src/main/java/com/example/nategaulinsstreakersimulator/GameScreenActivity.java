@@ -116,6 +116,10 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
+    public void moveEnemies(){
+
+    }
+
     public void checkCollision(){
 
         final ImageView playerView = findViewById(R.id.playerImageView);

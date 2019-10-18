@@ -3,9 +3,9 @@ package com.example.nategaulinsstreakersimulator;
 import android.graphics.Rect;
 import android.widget.ImageView;
 
-public class Cop{
+public class Cop extends Enemy{
 
-    private final int SPEED = 20;
+    private final int SPEED = 4;
     private final int SENSITIVITY = 10;
     private int posX;
     private int posY;
@@ -16,13 +16,9 @@ public class Cop{
     private Rect hitbox;
 
     public Cop(int posX, int posY, ImageView imageView){
-        this.posX = posX;
-        this.posY = posY;
-        this.direction = 0;
-        this.imageView = imageView;
-        this.hitbox = new Rect();
+        super(posX, posY, imageView);
 
-        imageView.getHitRect(this.hitbox);
+        this.direction = 0;
     }
 
     public int getSPEED() {
@@ -49,7 +45,7 @@ public class Cop{
         hitbox.intersect(playerHitbox);
     }
 
-    public boolean move(int playerX, int playerY){
+    public void move(int playerX, int playerY){
         // Get distance from player on both axis
         int distanceX = Math.abs(playerX - posX);
         int distanceY = Math.abs(playerY - posY);
@@ -104,11 +100,8 @@ public class Cop{
             posX -= SPEED;
         } else {
             // Direction should be between 1-4. Return error.
-            return false;
-        }
 
-        // Moved successfully. End function.
-        return true;
+        }
     }
 
 

@@ -4,5 +4,7 @@
     <animation-list android:id="@+id/playerUp" xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
         <item android:drawable="@drawable/player_up_1" android:duration="50"/>
         <item android:drawable="@drawable/player_up_2" android:duration="50"/>
+        <item android:drawable="@drawable/player_up_3" android:duration="50"/>
+        <item android:drawable="@drawable/player_up_4" android:duration="50"/>
     </animation-list>
 

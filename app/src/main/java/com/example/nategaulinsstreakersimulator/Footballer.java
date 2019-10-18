@@ -3,10 +3,9 @@ package com.example.nategaulinsstreakersimulator;
 import android.graphics.Rect;
 import android.widget.ImageView;
 
-public class Footballer {
+public class Footballer extends Enemy{
 
-    private final int SPEED = 30;
-    private final int SENSITIVITY = 5;
+    private final int SPEED = 10;
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
@@ -16,18 +15,13 @@ public class Footballer {
     Rect hitbox;
 
     public Footballer(int posX, int posY, ImageView imageView, int direction){
-        this.posX = posX;
-        this.posY = posY;
+        super(posX, posY, imageView);
+
         if(direction > 0 && direction <= 4){
             this.direction = direction;
         } else {
             this.direction = 1;
         }
-
-        this.imageView = imageView;
-        this.hitbox = new Rect();
-
-        imageView.getHitRect(this.hitbox);
     }
 
     public int getSPEED() {
@@ -36,10 +30,6 @@ public class Footballer {
 
     public int getDirection(){
         return direction;
-    }
-
-    public int getSENSITIVITY(){
-        return SENSITIVITY;
     }
 
     public void move(){
