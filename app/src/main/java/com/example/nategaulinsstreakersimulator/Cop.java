@@ -25,7 +25,7 @@ public class Cop{
         imageView.getHitRect(this.hitbox);
     }
 
-    public int getSpeed() {
+    public int getSPEED() {
         return SPEED;
     }
 
