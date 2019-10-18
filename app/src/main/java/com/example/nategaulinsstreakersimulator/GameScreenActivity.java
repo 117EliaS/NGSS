@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Layout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +38,19 @@ public class GameScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
+
+        Button upArrow = (Button) findViewById(R.id.buttonUp);
+
+        Button downArrow = (Button) findViewById(R.id.buttonDown);
+
+        Button leftArrow = (Button) findViewById(R.id.buttonLeft);
+
+        Button rightArrow = (Button) findViewById(R.id.buttonRight);
+
+        upArrow.getBackground().setAlpha(200);
+        downArrow.getBackground().setAlpha(200);
+        leftArrow.getBackground().setAlpha(200);
+        rightArrow.getBackground().setAlpha(200);
 
         // Timer shit
         runTimer();
@@ -143,6 +157,11 @@ public class GameScreenActivity extends AppCompatActivity {
                         endGame();
                     }
 
+                    if(playerView.getY() < 60 || playerView.getY() > 900 || playerView.getX() < 10 || playerView.getX() > 1700){
+
+                        endGame();
+                    }
+
                     handler.postDelayed(this, 2);
                 }
             });
@@ -228,6 +247,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
         final ImageView player = (ImageView) findViewById(R.id.playerImageView);
 
+
+
         int posx = (int) player.getX();
         int posy = (int) player.getY();
 
@@ -245,22 +266,22 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     if (playerDirection == 0) {
 
-                        player.setY(posy - 1);
+                        player.setY(posy - 5);
 
                     }
                     if (playerDirection == 1) {
 
-                        player.setY(posy + 1);
+                        player.setY(posy + 5);
 
                     }
                     if (playerDirection == 2) {
 
-                        player.setX(posx - 1);
+                        player.setX(posx - 5);
 
                     }
                     if (playerDirection == 3) {
 
-                        player.setX(posx + 1);
+                        player.setX(posx + 5);
 
                     }
 
