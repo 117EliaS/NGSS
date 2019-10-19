@@ -8,18 +8,13 @@ public abstract class Enemy {
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
-    // None = 0, Up = 1, Right = 2, Down = 3, Left = 4
+    // None = 0, Down = 1, Right = 2, Up = 3, Left = 4
     private int direction;
     private ImageView imageView;
     private Rect hitbox;
 
-    public Enemy(int posX, int posY, ImageView imageView){
-        this.posX = posX;
-        this.posY = posY;
-        this.imageView = imageView;
-        this.hitbox = new Rect();
+    public Enemy(){
 
-        imageView.getHitRect(this.hitbox);
     }
 
     public abstract int getSPEED();

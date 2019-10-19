@@ -30,7 +30,8 @@ public class GameScreenActivity extends AppCompatActivity {
     private AnimationDrawable playerFrameAnimation;
     private AnimationDrawable guardFrameAnimation;
     private AnimationDrawable footballFrameAnimation;
-
+    private Footballer[] footballers;
+    private Cop[] cops;
 
     private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
 
@@ -91,29 +92,17 @@ public class GameScreenActivity extends AppCompatActivity {
 
         playerRect = new Rect();
 
-        guardRect = new Rect();
-
-        footballRect = new Rect();
+        footballers = new Footballer[] {new Footballer(0, 0, footballView, 2)};
+        cops = new Cop[] {new Cop(0, 0, guardView)};
 
         playerView.getHitRect(playerRect);
-        guardView.getHitRect(guardRect);
-        footballView.getHitRect(footballRect);
-
-        //Use:
-        // Rect.intersects(rect1,rect2){
-        //
-        // insert method here
-        // }
-
-
-
 
         fixBackground();
 
         startRunningPlayer();
         movePlayer();
 
-
+        moveEnemies();
 
         checkCollision();
 
@@ -124,23 +113,38 @@ public class GameScreenActivity extends AppCompatActivity {
         BitmapDrawable field = (BitmapDrawable) getDrawable(R.drawable.field);
         Bitmap fieldFixed = Bitmap.createScaledBitmap(field.getBitmap(),1920,1080,true);
         Drawable fieldDone = new BitmapDrawable(getResources(), fieldFixed);
-        ConstraintLayout gameScreen = (ConstraintLayout) findViewById(R.id.gameScreen);
+        ConstraintLayout gameScreen = findViewById(R.id.gameScreen);
 
         gameScreen.setBackground(fieldDone);
 
     }
 
     public void moveEnemies(){
+        final ImageView playerView = findViewById(R.id.playerImageView);
 
+        if(gameOn = true) {
+            final Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+
+                    for(int i=0; i < footballers.length; i++){
+                        footballers[i].move();
+                    }
+
+                    for(int i=0; i < cops.length; i++){
+                        cops[i].move((int) playerView.getX(), (int) playerView.getY());
+                    }
+
+                    handler.postDelayed(this, 2);
+                }
+            });
+        }
     }
 
     public void checkCollision(){
 
         final ImageView playerView = findViewById(R.id.playerImageView);
-
-        final ImageView guardView = findViewById(R.id.guardImageView);
-
-        final ImageView footballView = findViewById(R.id.footballImageView);
 
         if(gameOn = true) {
             final Handler handler = new Handler();
@@ -149,12 +153,17 @@ public class GameScreenActivity extends AppCompatActivity {
                 public void run() {
 
                     playerView.getHitRect(playerRect);
-                    guardView.getHitRect(guardRect);
-                    footballView.getHitRect(footballRect);
 
-                    if (Rect.intersects(playerRect, guardRect) || Rect.intersects(playerRect, footballRect)) {
+                    for(int i=0; i<footballers.length; i++){
+                        if(footballers[i].checkIntersect(playerRect)){
+                            endGame();
+                        }
+                    }
 
-                        endGame();
+                    for(int i=0; i<cops.length; i++){
+                        if(cops[i].checkIntersect(playerRect)){
+                            endGame();
+                        }
                     }
 
                     if(playerView.getY() < 60 || playerView.getY() > 900 || playerView.getX() < 10 || playerView.getX() > 1700){
