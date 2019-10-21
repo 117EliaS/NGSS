@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 public class Footballer extends Enemy{
 
-    private final int SPEED = 5;
+    private final int SPEED = 15;
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
