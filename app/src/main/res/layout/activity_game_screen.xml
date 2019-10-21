@@ -40,67 +40,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.601" />  -->
 
-   <Button
-       android:id="@+id/buttonUp"
-       android:layout_width="70dp"
-       android:layout_height="54dp"
-       android:alpha="64"
-       android:background="@drawable/arrow_up"
-       android:onClick="changePlayerDirUp"
-       android:text=""
-       android:textSize="@dimen/menuFont"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.13"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.663" />
 
+    <Button
+        android:id="@+id/buttonUp"
+        android:layout_width="70dp"
+        android:layout_height="54dp"
+        android:alpha="64"
+        android:background="@drawable/arrow_up"
+        android:onClick="changePlayerDirUp"
+        android:text=""
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
 
-   <Button
-       android:id="@+id/buttonDown"
-       android:layout_width="70dp"
-       android:layout_height="54dp"
-       android:background="@drawable/arrow_down"
-       android:onClick="changePlayerDirDown"
-       android:text=""
-       android:textSize="@dimen/menuFont"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.13"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.966" />
+    <Button
+        android:id="@+id/buttonLeft"
+        android:layout_width="70dp"
+        android:layout_height="54dp"
+        android:background="@drawable/arrow_left"
+        android:onClick="changePlayerDirLeft"
+        android:text=""
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.932" />
 
-   <Button
-       android:id="@+id/buttonLeft"
-       android:layout_width="70dp"
-       android:layout_height="54dp"
-       android:background="@drawable/arrow_left"
-       android:onClick="changePlayerDirLeft"
-       android:text=""
-       android:textSize="@dimen/menuFont"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.024"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.815" />
+    <Button
+        android:id="@+id/buttonRight"
+        android:layout_width="70dp"
+        android:layout_height="54dp"
+        android:background="@drawable/arrow_right"
+        android:onClick="changePlayerDirRight"
+        android:text=""
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.932" />
 
-   <Button
-       android:id="@+id/buttonRight"
-       android:layout_width="70dp"
-       android:layout_height="54dp"
-       android:background="@drawable/arrow_right"
-       android:onClick="changePlayerDirRight"
-       android:text=""
-       android:textSize="@dimen/menuFont"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.236"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.815" />
+    <Button
+        android:id="@+id/buttonDown"
+        android:layout_width="70dp"
+        android:layout_height="54dp"
+        android:background="@drawable/arrow_down"
+        android:onClick="changePlayerDirDown"
+        android:text=""
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.932" />
 
     <ImageView
         android:id="@+id/playerImageView"
@@ -116,7 +116,7 @@
         tools:srcCompat="@drawable/player_down_1" />
 
    <ImageView
-        android:id="@+id/guardImageView"
+        android:id="@+id/guardImageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,6 +125,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.317"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.317"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.462"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.462"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604"
+        tools:srcCompat="@drawable/cop_down_1" />
+
+    <ImageView
+        android:id="@+id/guardImageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
         tools:srcCompat="@drawable/cop_down_1" />
 
     <ImageView

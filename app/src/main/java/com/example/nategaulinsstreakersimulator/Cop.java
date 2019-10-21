@@ -7,7 +7,7 @@ import android.widget.ImageView;
 public class Cop extends Enemy{
 
     private final int SPEED = 4;
-    private final int SENSITIVITY = 10;
+    private int sensitivity;
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
@@ -17,7 +17,7 @@ public class Cop extends Enemy{
     private Rect hitbox;
     private AnimationDrawable animation;
 
-    public Cop(int posX, int posY, ImageView imageView){
+    public Cop(int posX, int posY, ImageView imageView, int sensitivity){
         super();
 
         this.direction = 0;
@@ -42,7 +42,7 @@ public class Cop extends Enemy{
     }
 
     public int getSENSITIVITY(){
-        return SENSITIVITY;
+        return sensitivity;
     }
 
     public int getPosX(){
@@ -51,6 +51,19 @@ public class Cop extends Enemy{
 
     public int getPosY(){
         return posY;
+    }
+
+    public void setPosY(int y){
+        posY = y;
+    }
+
+    public void setPosX(int x){
+        posX = x;
+    }
+
+    public void setSENSITIVITY(int s){
+
+        sensitivity = s;
     }
 
     public boolean checkIntersect(Rect playerHitbox){
@@ -70,14 +83,14 @@ public class Cop extends Enemy{
         if(direction != 0) {
             // Direction was already defined, run AI magic
             // Test if successfully reached player on either axis
-            if ((direction == 1 || direction == 3) && (Math.abs(distanceY) <= SENSITIVITY)) {
+            if ((direction == 1 || direction == 3) && (Math.abs(distanceY) <= sensitivity)) {
                 // Reached Y value, chase on X axis
                 if (playerX > posX) {
                     direction = 2;
                 } else {
                     direction = 4;
                 }
-            } else if ((direction == 2 || direction == 4) && (Math.abs(distanceX) <= SENSITIVITY)) {
+            } else if ((direction == 2 || direction == 4) && (Math.abs(distanceX) <= sensitivity)) {
                 // Reached X value, chase on Y axis
                 if (playerY > posY) {
                     direction = 1;

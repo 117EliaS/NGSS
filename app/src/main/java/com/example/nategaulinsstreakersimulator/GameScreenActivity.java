@@ -21,6 +21,7 @@ import java.util.Locale;
 public class GameScreenActivity extends AppCompatActivity {
 
     private int milsecs = 0;
+    private int secs = 0;
     private boolean running = false;
     private boolean runningPlayer = false;
     private Rect playerRect;
@@ -28,10 +29,17 @@ public class GameScreenActivity extends AppCompatActivity {
     private Rect footballRect;
     private boolean gameOn = false;
     private AnimationDrawable playerFrameAnimation;
-    private AnimationDrawable guardFrameAnimation;
+    private AnimationDrawable guardFrameAnimation1;
+    private AnimationDrawable guardFrameAnimation2;
+    private AnimationDrawable guardFrameAnimation3;
+    private AnimationDrawable guardFrameAnimation4;
+    private AnimationDrawable guardFrameAnimation5;
+    private AnimationDrawable guardFrameAnimation6;
+    private AnimationDrawable guardFrameAnimation7;
     private AnimationDrawable footballFrameAnimation;
     private Footballer[] footballers;
     private Cop[] cops;
+    private int copsSpawned = 1;
 
     private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
 
@@ -68,12 +76,70 @@ public class GameScreenActivity extends AppCompatActivity {
 
         playerFrameAnimation.start();
 
-        ImageView guard = findViewById(R.id.guardImageView);
-        guard.setBackgroundResource(R.drawable.cop_animation_up);
+        //----
 
-       guardFrameAnimation = (AnimationDrawable) guard.getBackground();
+        ImageView guard1 = findViewById(R.id.guardImageView1);
+        guard1.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation.start();
+        guardFrameAnimation1 = (AnimationDrawable) guard1.getBackground();
+
+        guardFrameAnimation1.start();
+
+        //----
+
+        ImageView guard2 = findViewById(R.id.guardImageView2);
+        guard2.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation2 = (AnimationDrawable) guard2.getBackground();
+
+        guardFrameAnimation2.start();
+
+        //----
+
+        ImageView guard3 = findViewById(R.id.guardImageView3);
+        guard3.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation3 = (AnimationDrawable) guard3.getBackground();
+
+        guardFrameAnimation3.start();
+
+        //----
+        ImageView guard4 = findViewById(R.id.guardImageView4);
+        guard4.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation4 = (AnimationDrawable) guard4.getBackground();
+
+        guardFrameAnimation4.start();
+
+        //----
+
+        ImageView guard5 = findViewById(R.id.guardImageView5);
+        guard5.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation5 = (AnimationDrawable) guard5.getBackground();
+
+        guardFrameAnimation5.start();
+
+        //----
+
+        ImageView guard6 = findViewById(R.id.guardImageView6);
+        guard6.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation6 = (AnimationDrawable) guard6.getBackground();
+
+        guardFrameAnimation6.start();
+
+        //----
+
+        ImageView guard7 = findViewById(R.id.guardImageView7);
+        guard7.setBackgroundResource(R.drawable.cop_animation_up);
+
+        guardFrameAnimation7 = (AnimationDrawable) guard7.getBackground();
+
+        guardFrameAnimation7.start();
+
+        //----
+
 
         ImageView football = findViewById(R.id.footballImageView);
         football.setBackgroundResource(R.drawable.footballer_animation_up);
@@ -86,14 +152,35 @@ public class GameScreenActivity extends AppCompatActivity {
         //hitBoxes for the imageViews
         ImageView playerView = findViewById(R.id.playerImageView);
 
-        ImageView guardView = findViewById(R.id.guardImageView);
+        ImageView guardView1 = findViewById(R.id.guardImageView1);
+        ImageView guardView2 = findViewById(R.id.guardImageView2);
+        ImageView guardView3 = findViewById(R.id.guardImageView3);
+        ImageView guardView4 = findViewById(R.id.guardImageView4);
+        ImageView guardView5 = findViewById(R.id.guardImageView5);
+        ImageView guardView6 = findViewById(R.id.guardImageView6);
+        ImageView guardView7 = findViewById(R.id.guardImageView7);
 
         ImageView footballView = findViewById(R.id.footballImageView);
 
         playerRect = new Rect();
 
         footballers = new Footballer[] {new Footballer(0, 0, footballView, 2)};
-        cops = new Cop[] {new Cop(0, 0, guardView)};
+
+        cops = new Cop[] {new Cop(0, 0, guardView1, 10),
+                new Cop(0, 0, guardView2, 20),
+                new Cop(0, 0, guardView3, 5),
+                new Cop(0, 0, guardView4, 60),
+                new Cop(0, 0, guardView5, 50),
+                new Cop(0, 0, guardView6, 40),
+                new Cop(0, 0, guardView7, 30)};
+
+        cops[1].getView().setVisibility(View.INVISIBLE);
+        cops[2].getView().setVisibility(View.INVISIBLE);
+        cops[3].getView().setVisibility(View.INVISIBLE);
+        cops[4].getView().setVisibility(View.INVISIBLE);
+        cops[5].getView().setVisibility(View.INVISIBLE);
+        cops[6].getView().setVisibility(View.INVISIBLE);
+
 
         playerView.getHitRect(playerRect);
 
@@ -116,6 +203,65 @@ public class GameScreenActivity extends AppCompatActivity {
         ConstraintLayout gameScreen = findViewById(R.id.gameScreen);
 
         gameScreen.setBackground(fieldDone);
+
+    }
+
+    public void spawnMoreCops(){
+
+        if(secs > 4 && copsSpawned == 1){
+
+            cops[1].getView().setVisibility(View.VISIBLE);
+            cops[1].setPosX(0);
+            cops[1].setPosY(0);
+
+            copsSpawned++;
+        }
+
+        if(secs > 8 && copsSpawned == 2){
+
+            cops[2].getView().setVisibility(View.VISIBLE);
+            cops[2].setPosX(0);
+            cops[2].setPosY(0);
+
+            copsSpawned++;
+        }
+
+        if(secs > 12 && copsSpawned == 3){
+
+            cops[3].getView().setVisibility(View.VISIBLE);
+            cops[3].setPosX(0);
+            cops[3].setPosY(0);
+
+            copsSpawned++;
+        }
+
+        if(secs > 16 && copsSpawned == 4){
+
+            cops[4].getView().setVisibility(View.VISIBLE);
+            cops[4].setPosX(0);
+            cops[4].setPosY(0);
+
+            copsSpawned++;
+        }
+
+        if(secs > 20 && copsSpawned == 5){
+
+            cops[5].getView().setVisibility(View.VISIBLE);
+            cops[5].setPosX(0);
+            cops[5].setPosY(0);
+
+            copsSpawned++;
+        }
+
+        if(secs > 24 && copsSpawned == 6){
+
+            cops[6].getView().setVisibility(View.VISIBLE);
+            cops[6].setPosX(0);
+            cops[6].setPosY(0);
+
+            copsSpawned++;
+        }
+
 
     }
 
@@ -171,6 +317,8 @@ public class GameScreenActivity extends AppCompatActivity {
                         endGame();
                     }
 
+                    spawnMoreCops();
+
                     handler.postDelayed(this, 2);
                 }
             });
@@ -183,7 +331,13 @@ public class GameScreenActivity extends AppCompatActivity {
         stopTimer();
         gameOn = false;
         footballFrameAnimation.stop();
-        guardFrameAnimation.stop();
+        guardFrameAnimation1.stop();
+        guardFrameAnimation2.stop();
+        guardFrameAnimation3.stop();
+        guardFrameAnimation4.stop();
+        guardFrameAnimation5.stop();
+        guardFrameAnimation6.stop();
+        guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
     }
@@ -303,6 +457,8 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     //Change animations (DEVELOPER)
+
+    /*
     public void devChangeAllUp(View v){
 
         playerChangeAnimUp(v);
@@ -330,6 +486,8 @@ public class GameScreenActivity extends AppCompatActivity {
         guardChangeAnimRight(v);
         footballChangeAnimRight(v);
     }
+
+     */
 
 
     //Changes animations for the player
@@ -378,9 +536,9 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     //Changes the animations for the guard character
-    public void guardChangeAnimUp(View v){
+    public void guardChangeAnimUp(ImageView v){
 
-        ImageView img = findViewById(R.id.guardImageView);
+        ImageView img = v;
         img.setBackgroundResource(R.drawable.cop_animation_up);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -389,9 +547,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    public void guardChangeAnimDown(View v){
+    public void guardChangeAnimDown(ImageView v){
 
-        ImageView img = findViewById(R.id.guardImageView);
+        ImageView img = v;
         img.setBackgroundResource(R.drawable.cop_animation_down);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -400,9 +558,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    public void guardChangeAnimLeft(View v){
+    public void guardChangeAnimLeft(ImageView v){
 
-        ImageView img = findViewById(R.id.guardImageView);
+        ImageView img = v;
         img.setBackgroundResource(R.drawable.cop_animation_left);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -411,9 +569,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    public void guardChangeAnimRight(View v){
+    public void guardChangeAnimRight(ImageView v){
 
-        ImageView img = findViewById(R.id.guardImageView);
+        ImageView img = v;
         img.setBackgroundResource(R.drawable.cop_animation_right);
 
         AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
@@ -504,7 +662,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
                 int milsec = milsecs % 10;
 
-                int secs = (milsecs / 10) % 60;
+                secs = (milsecs / 10) % 60;
 
                 int minutes  = (milsecs / 600);
 
