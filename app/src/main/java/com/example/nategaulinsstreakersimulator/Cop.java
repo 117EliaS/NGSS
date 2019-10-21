@@ -20,9 +20,10 @@ public class Cop extends Enemy{
     public Cop(int posX, int posY, ImageView imageView, int sensitivity){
         super();
 
-        this.direction = 0;
+        this.direction = 1;
         this.posX = posX;
         this.posY = posY;
+        this.sensitivity = sensitivity;
 
         this.imageView = imageView;
         this.hitbox = new Rect();
@@ -41,7 +42,7 @@ public class Cop extends Enemy{
         return direction;
     }
 
-    public int getSENSITIVITY(){
+    public int getSensitivity(){
         return sensitivity;
     }
 
@@ -61,9 +62,14 @@ public class Cop extends Enemy{
         posX = x;
     }
 
-    public void setSENSITIVITY(int s){
+    public void setSensitivity(int sensitivity){
+        this.sensitivity = sensitivity;
+    }
 
-        sensitivity = s;
+    public void setDirection(int direction){
+        if(direction > 0 && direction <= 4){
+            this.direction = direction;
+        }
     }
 
     public boolean checkIntersect(Rect playerHitbox){
@@ -83,18 +89,18 @@ public class Cop extends Enemy{
         if(direction != 0) {
             // Direction was already defined, run AI magic
             // Test if successfully reached player on either axis
-            if ((direction == 1 || direction == 3) && (Math.abs(distanceY) <= sensitivity)) {
+            if (distanceY <= sensitivity) {
                 // Reached Y value, chase on X axis
                 if (playerX > posX) {
                     direction = 2;
-                } else {
+                } else if(playerX < posX){
                     direction = 4;
                 }
-            } else if ((direction == 2 || direction == 4) && (Math.abs(distanceX) <= sensitivity)) {
+            } else if (distanceX <= sensitivity) {
                 // Reached X value, chase on Y axis
                 if (playerY > posY) {
                     direction = 1;
-                } else {
+                } else if(playerY < posY){
                     direction = 3;
                 }
             }

@@ -167,12 +167,12 @@ public class GameScreenActivity extends AppCompatActivity {
         footballers = new Footballer[] {new Footballer(0, 0, footballView, 2)};
 
         cops = new Cop[] {new Cop(0, 0, guardView1, 10),
-                new Cop(0, 0, guardView2, 20),
-                new Cop(0, 0, guardView3, 5),
-                new Cop(0, 0, guardView4, 60),
-                new Cop(0, 0, guardView5, 50),
-                new Cop(0, 0, guardView6, 40),
-                new Cop(0, 0, guardView7, 30)};
+                new Cop(0, 0, guardView2, 50),
+                new Cop(0, 0, guardView3, 100),
+                new Cop(0, 0, guardView4, 150),
+                new Cop(0, 0, guardView5, 200),
+                new Cop(0, 0, guardView6, 250),
+                new Cop(0, 0, guardView7, 300)};
 
         cops[1].getView().setVisibility(View.INVISIBLE);
         cops[2].getView().setVisibility(View.INVISIBLE);
@@ -213,6 +213,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[1].getView().setVisibility(View.VISIBLE);
             cops[1].setPosX(0);
             cops[1].setPosY(0);
+            cops[1].setDirection(1);
 
             copsSpawned++;
         }
@@ -222,6 +223,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[2].getView().setVisibility(View.VISIBLE);
             cops[2].setPosX(0);
             cops[2].setPosY(0);
+            cops[2].setDirection(1);
 
             copsSpawned++;
         }
@@ -231,6 +233,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[3].getView().setVisibility(View.VISIBLE);
             cops[3].setPosX(0);
             cops[3].setPosY(0);
+            cops[3].setDirection(1);
 
             copsSpawned++;
         }
@@ -240,6 +243,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[4].getView().setVisibility(View.VISIBLE);
             cops[4].setPosX(0);
             cops[4].setPosY(0);
+            cops[4].setDirection(1);
 
             copsSpawned++;
         }
@@ -249,6 +253,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[5].getView().setVisibility(View.VISIBLE);
             cops[5].setPosX(0);
             cops[5].setPosY(0);
+            cops[5].setDirection(1);
 
             copsSpawned++;
         }
@@ -258,6 +263,7 @@ public class GameScreenActivity extends AppCompatActivity {
             cops[6].getView().setVisibility(View.VISIBLE);
             cops[6].setPosX(0);
             cops[6].setPosY(0);
+            cops[6].setDirection(1);
 
             copsSpawned++;
         }
