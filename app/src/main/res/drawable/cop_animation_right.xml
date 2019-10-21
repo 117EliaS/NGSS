@@ -2,6 +2,8 @@
 
 
 <animation-list android:id="@+id/guardRight" xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
-    <item android:drawable="@drawable/cop_right_1" android:duration="50"/>
-    <item android:drawable="@drawable/cop_right_2" android:duration="50"/>
+    <item android:drawable="@drawable/cop_right_1" android:duration="100"/>
+    <item android:drawable="@drawable/cop_right_2" android:duration="100"/>
+    <item android:drawable="@drawable/cop_right_3" android:duration="100"/>
+    <item android:drawable="@drawable/cop_right_4" android:duration="100"/>
 </animation-list>

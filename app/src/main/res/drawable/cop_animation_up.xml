@@ -2,6 +2,9 @@
 
 
 <animation-list android:id="@+id/guardUp" xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
-    <item android:drawable="@drawable/cop_up_1" android:duration="50"/>
-    <item android:drawable="@drawable/cop_up_2" android:duration="50"/>
+    <item android:drawable="@drawable/cop_up_1" android:duration="100"/>
+    <item android:drawable="@drawable/cop_up_2" android:duration="100"/>
+    <item android:drawable="@drawable/cop_up_3" android:duration="100"/>
+    <item android:drawable="@drawable/cop_up_4" android:duration="100"/>
+
 </animation-list>
