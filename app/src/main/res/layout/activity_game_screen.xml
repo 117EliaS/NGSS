@@ -205,7 +205,7 @@
         tools:srcCompat="@drawable/cop_down_1" />
 
     <ImageView
-        android:id="@+id/footballImageView"
+        android:id="@+id/footballImageView1"
         android:layout_width="30dp"
         android:layout_height="45dp"
         android:scaleType="fitCenter"
@@ -215,6 +215,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.317"
+        tools:srcCompat="@drawable/footballer_down_1" />
+
+    <ImageView
+        android:id="@+id/footballImageView2"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316"
+        tools:srcCompat="@drawable/footballer_down_1" />
+
+    <ImageView
+        android:id="@+id/footballImageView3"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551"
+        tools:srcCompat="@drawable/footballer_down_1" />
+
+    <ImageView
+        android:id="@+id/footballImageView4"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551"
         tools:srcCompat="@drawable/footballer_down_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

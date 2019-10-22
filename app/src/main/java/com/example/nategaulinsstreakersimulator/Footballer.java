@@ -49,6 +49,16 @@ public class Footballer extends Enemy{
         return direction;
     }
 
+    public void setPosX(int x){
+
+        posX = x;
+    }
+
+    public void setPosY(int y){
+
+        posY = y;
+    }
+
     public boolean checkIntersect(Rect playerHitbox){
         return Rect.intersects(playerHitbox, hitbox);
     }
