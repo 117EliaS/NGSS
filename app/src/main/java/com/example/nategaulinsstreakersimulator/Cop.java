@@ -7,7 +7,9 @@ import android.widget.ImageView;
 public class Cop extends Enemy{
 
     private final int SPEED = 4;
-    private int sensitivity;
+    private int SENSITIVITY = 10;
+    private int runTimer;
+    private int bias;
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
@@ -17,13 +19,13 @@ public class Cop extends Enemy{
     private Rect hitbox;
     private AnimationDrawable animation;
 
-    public Cop(int posX, int posY, ImageView imageView, int sensitivity){
+    public Cop(int posX, int posY, ImageView imageView, int bias){
         super();
 
         this.direction = 1;
         this.posX = posX;
         this.posY = posY;
-        this.sensitivity = sensitivity;
+        this.runTimer = 0;
 
         this.imageView = imageView;
         this.hitbox = new Rect();
@@ -43,7 +45,7 @@ public class Cop extends Enemy{
     }
 
     public int getSensitivity(){
-        return sensitivity;
+        return SENSITIVITY;
     }
 
     public int getPosX(){
@@ -62,16 +64,6 @@ public class Cop extends Enemy{
         posX = x;
     }
 
-    public void setSensitivity(int sensitivity){
-        this.sensitivity = sensitivity;
-    }
-
-    public void setDirection(int direction){
-        if(direction > 0 && direction <= 4){
-            this.direction = direction;
-        }
-    }
-
     public boolean checkIntersect(Rect playerHitbox){
         return Rect.intersects(playerHitbox, hitbox);
     }
@@ -86,17 +78,18 @@ public class Cop extends Enemy{
         int distanceY = Math.abs(playerY - posY);
 
         // If direction is already defined, check to see if change is necessary.
-        if(direction != 0) {
-            // Direction was already defined, run AI magic
-            // Test if successfully reached player on either axis
-            if (distanceY <= sensitivity) {
+
+        // Direction was already defined, run AI magic
+        // Test if successfully reached player on either axis
+        if(runTimer <= 0){
+            if (distanceY <= SENSITIVITY) {
                 // Reached Y value, chase on X axis
                 if (playerX > posX) {
                     direction = 2;
                 } else if(playerX < posX){
                     direction = 4;
                 }
-            } else if (distanceX <= sensitivity) {
+            } else if (distanceX <= SENSITIVITY) {
                 // Reached X value, chase on Y axis
                 if (playerY > posY) {
                     direction = 1;
@@ -104,25 +97,8 @@ public class Cop extends Enemy{
                     direction = 3;
                 }
             }
-        } else {
-            // Direction not defined, start AI magic
-            // Which distance is greater?
-            if(distanceX >= distanceY){
-                // X is greater or they are equal, move horizontally
-                if(playerX > posX){
-                    direction = 2;
-                } else {
-                    direction = 4;
-                }
-            } else {
-                // Y is greater, move vertically
-                if(playerY > posY){
-                    direction = 1;
-                } else {
-                    direction = 3;
-                }
-            }
         }
+
 
         // Direction now set, move based on direction
         if(direction == 1){
