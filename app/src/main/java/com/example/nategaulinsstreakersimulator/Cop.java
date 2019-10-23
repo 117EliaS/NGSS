@@ -7,9 +7,10 @@ import android.widget.ImageView;
 public class Cop extends Enemy{
 
     private final int SPEED = 4;
-    private int SENSITIVITY = 10;
+    private final int SENSITIVITY = 10;
+    private final int TIME = 500;
     private int runTimer;
-    private int bias;
+    private double bias;
     private int posX;
     private int posY;
     // Uses int values to represent the direction the entity is facing
@@ -19,13 +20,14 @@ public class Cop extends Enemy{
     private Rect hitbox;
     private AnimationDrawable animation;
 
-    public Cop(int posX, int posY, ImageView imageView, int bias){
+    public Cop(int posX, int posY, ImageView imageView, double bias){
         super();
 
         this.direction = 1;
         this.posX = posX;
         this.posY = posY;
         this.runTimer = 0;
+        this.bias = bias;
 
         this.imageView = imageView;
         this.hitbox = new Rect();
@@ -82,21 +84,29 @@ public class Cop extends Enemy{
         // Direction was already defined, run AI magic
         // Test if successfully reached player on either axis
         if(runTimer <= 0){
-            if (distanceY <= SENSITIVITY) {
-                // Reached Y value, chase on X axis
-                if (playerX > posX) {
-                    direction = 2;
-                } else if(playerX < posX){
-                    direction = 4;
+            if(Math.random() <= bias){
+                if (distanceY <= SENSITIVITY) {
+                    // Reached Y value, chase on X axis
+                    if (playerX > posX) {
+                        direction = 2;
+                    } else if(playerX < posX){
+                        direction = 4;
+                    }
+                } else if (distanceX <= SENSITIVITY) {
+                    // Reached X value, chase on Y axis
+                    if (playerY > posY) {
+                        direction = 1;
+                    } else if(playerY < posY){
+                        direction = 3;
+                    }
                 }
-            } else if (distanceX <= SENSITIVITY) {
-                // Reached X value, chase on Y axis
-                if (playerY > posY) {
-                    direction = 1;
-                } else if(playerY < posY){
-                    direction = 3;
-                }
+            } else {
+                direction = (int) (Math.random() * 4) + 1;
             }
+
+            runTimer = TIME;
+        } else {
+            runTimer--;
         }
 
 
