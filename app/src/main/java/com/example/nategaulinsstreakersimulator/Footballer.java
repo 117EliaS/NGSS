@@ -60,6 +60,7 @@ public class Footballer extends Enemy{
     }
 
     public boolean checkIntersect(Rect playerHitbox){
+        imageView.getHitRect(this.hitbox);
         return Rect.intersects(playerHitbox, hitbox);
     }
 

@@ -8,7 +8,7 @@ public class Cop extends Enemy{
 
     private final int SPEED = 4;
     private final int SENSITIVITY = 10;
-    private final int TIME = 500;
+    private final int TIME = 50;
     private int runTimer;
     private double bias;
     private int posX;
@@ -67,7 +67,13 @@ public class Cop extends Enemy{
     }
 
     public boolean checkIntersect(Rect playerHitbox){
+        imageView.getHitRect(this.hitbox);
         return Rect.intersects(playerHitbox, hitbox);
+    }
+
+    public void setDirection(int dir){
+
+        direction = dir;
     }
 
     public ImageView getView(){

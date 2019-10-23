@@ -209,13 +209,13 @@ public class GameScreenActivity extends AppCompatActivity {
                 new Footballer(0, 0, footballView3, 2),
                 new Footballer(0, 0, footballView4, 2)};
 
-        cops = new Cop[] {new Cop(0, 0, guardView1, 10),
-                new Cop(0, 0, guardView2, 50),
-                new Cop(0, 0, guardView3, 100),
-                new Cop(0, 0, guardView4, 150),
-                new Cop(0, 0, guardView5, 200),
-                new Cop(0, 0, guardView6, 250),
-                new Cop(0, 0, guardView7, 300)};
+        cops = new Cop[] {new Cop(0, 0, guardView1, .9),
+                new Cop(0, 0, guardView2, .9),
+                new Cop(0, 0, guardView3, .9),
+                new Cop(0, 0, guardView4, .9),
+                new Cop(0, 0, guardView5, .9),
+                new Cop(0, 0, guardView6, .9),
+                new Cop(0, 0, guardView7, .9)};
 
         cops[1].getView().setVisibility(View.INVISIBLE);
         cops[2].getView().setVisibility(View.INVISIBLE);
@@ -253,12 +253,26 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void spawnMoreCops(){
 
+        int side = (int)(Math.random() * 2);
+
+        int posDownSide = 60 + (int)(Math.random() * 850);
+
         if(secs > 4 && copsSpawned == 1){
 
             cops[1].getView().setVisibility(View.VISIBLE);
-            cops[1].setPosX(0);
-            cops[1].setPosY(0);
-            cops[1].setDirection(1);
+            if(side == 1) {
+                cops[1].setPosX(0);
+                cops[1].setPosY(posDownSide);
+                cops[1].setDirection(2);
+            }
+
+            else{
+
+                cops[1].setPosX(1700);
+                cops[1].setPosY(posDownSide);
+                cops[1].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
@@ -266,9 +280,19 @@ public class GameScreenActivity extends AppCompatActivity {
         if(secs > 8 && copsSpawned == 2){
 
             cops[2].getView().setVisibility(View.VISIBLE);
-            cops[2].setPosX(0);
-            cops[2].setPosY(0);
-            cops[2].setDirection(1);
+            if(side == 1) {
+                cops[2].setPosX(0);
+                cops[2].setPosY(posDownSide);
+                cops[2].setDirection(2);
+            }
+
+            else{
+
+                cops[2].setPosX(1700);
+                cops[2].setPosY(posDownSide);
+                cops[2].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
@@ -276,9 +300,19 @@ public class GameScreenActivity extends AppCompatActivity {
         if(secs > 12 && copsSpawned == 3){
 
             cops[3].getView().setVisibility(View.VISIBLE);
-            cops[3].setPosX(0);
-            cops[3].setPosY(0);
-            cops[3].setDirection(1);
+            if(side == 1) {
+                cops[3].setPosX(0);
+                cops[3].setPosY(posDownSide);
+                cops[3].setDirection(2);
+            }
+
+            else{
+
+                cops[3].setPosX(1700);
+                cops[3].setPosY(posDownSide);
+                cops[3].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
@@ -286,9 +320,21 @@ public class GameScreenActivity extends AppCompatActivity {
         if(secs > 16 && copsSpawned == 4){
 
             cops[4].getView().setVisibility(View.VISIBLE);
-            cops[4].setPosX(0);
-            cops[4].setPosY(0);
-            cops[4].setDirection(1);
+
+
+            if(side == 1) {
+                cops[4].setPosX(0);
+                cops[4].setPosY(posDownSide);
+                cops[4].setDirection(2);
+            }
+
+            else{
+
+                cops[4].setPosX(1700);
+                cops[4].setPosY(posDownSide);
+                cops[4].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
@@ -296,9 +342,19 @@ public class GameScreenActivity extends AppCompatActivity {
         if(secs > 20 && copsSpawned == 5){
 
             cops[5].getView().setVisibility(View.VISIBLE);
-            cops[5].setPosX(0);
-            cops[5].setPosY(0);
-            cops[5].setDirection(1);
+            if(side == 1) {
+                cops[5].setPosX(0);
+                cops[5].setPosY(posDownSide);
+                cops[5].setDirection(2);
+            }
+
+            else{
+
+                cops[5].setPosX(1700);
+                cops[5].setPosY(posDownSide);
+                cops[5].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
@@ -306,9 +362,19 @@ public class GameScreenActivity extends AppCompatActivity {
         if(secs > 24 && copsSpawned == 6){
 
             cops[6].getView().setVisibility(View.VISIBLE);
-            cops[6].setPosX(0);
-            cops[6].setPosY(0);
-            cops[6].setDirection(1);
+            if(side == 1) {
+                cops[6].setPosX(0);
+                cops[6].setPosY(posDownSide);
+                cops[6].setDirection(2);
+            }
+
+            else{
+
+                cops[6].setPosX(1700);
+                cops[6].setPosY(posDownSide);
+                cops[6].setDirection(4);
+
+            }
 
             copsSpawned++;
         }
