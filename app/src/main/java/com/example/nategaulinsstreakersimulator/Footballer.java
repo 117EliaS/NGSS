@@ -49,6 +49,10 @@ public class Footballer extends Enemy{
         return direction;
     }
 
+    public void setDirection(int d){
+        direction = d;
+    }
+
     public void setPosX(int x){
 
         posX = x;

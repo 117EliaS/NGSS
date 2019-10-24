@@ -3,6 +3,7 @@ package com.example.nategaulinsstreakersimulator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
@@ -259,7 +260,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         if(secs > 4 && copsSpawned == 1){
 
-            cops[1].getView().setVisibility(View.VISIBLE);
+
             if(side == 1) {
                 cops[1].setPosX(0);
                 cops[1].setPosY(posDownSide);
@@ -273,13 +274,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[1].setDirection(4);
 
             }
+            cops[1].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
 
         if(secs > 8 && copsSpawned == 2){
 
-            cops[2].getView().setVisibility(View.VISIBLE);
+
             if(side == 1) {
                 cops[2].setPosX(0);
                 cops[2].setPosY(posDownSide);
@@ -293,13 +295,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[2].setDirection(4);
 
             }
+            cops[2].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
 
         if(secs > 12 && copsSpawned == 3){
 
-            cops[3].getView().setVisibility(View.VISIBLE);
+
             if(side == 1) {
                 cops[3].setPosX(0);
                 cops[3].setPosY(posDownSide);
@@ -313,13 +316,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[3].setDirection(4);
 
             }
+            cops[3].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
 
         if(secs > 16 && copsSpawned == 4){
 
-            cops[4].getView().setVisibility(View.VISIBLE);
+
 
 
             if(side == 1) {
@@ -335,13 +339,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[4].setDirection(4);
 
             }
+            cops[4].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
 
         if(secs > 20 && copsSpawned == 5){
 
-            cops[5].getView().setVisibility(View.VISIBLE);
+
             if(side == 1) {
                 cops[5].setPosX(0);
                 cops[5].setPosY(posDownSide);
@@ -355,13 +360,14 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[5].setDirection(4);
 
             }
+            cops[5].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
 
         if(secs > 24 && copsSpawned == 6){
 
-            cops[6].getView().setVisibility(View.VISIBLE);
+
             if(side == 1) {
                 cops[6].setPosX(0);
                 cops[6].setPosY(posDownSide);
@@ -375,6 +381,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 cops[6].setDirection(4);
 
             }
+            cops[6].getView().setVisibility(View.VISIBLE);
 
             copsSpawned++;
         }
@@ -417,6 +424,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
 
+                    int side = (int)(Math.random() * 2);
                     double randChance = Math.random();
                     int randInt = (int) (randChance * 8);
 
@@ -424,7 +432,19 @@ public class GameScreenActivity extends AppCompatActivity {
 
                         int yPos = 60 + (int)(Math.random() * 850);
 
-                        footballers[footballRotation].setPosX(0);
+                        if(side == 1) {
+
+                            footballers[footballRotation].setPosX(0);
+                            footballers[footballRotation].setDirection(2);
+
+                        }
+
+                        else{
+
+                            footballers[footballRotation].setPosX(1700);
+                            footballers[footballRotation].setDirection(4);
+
+                        }
                         footballers[footballRotation].setPosY(yPos);
 
                         footballRotation++;
@@ -456,13 +476,17 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     for(int i=0; i<footballers.length; i++){
                         if(footballers[i].checkIntersect(playerRect)){
-                            endGame();
+                            if(footballers[i].getView().getVisibility() == View.VISIBLE) {
+                                endGame();
+                            }
                         }
                     }
 
                     for(int i=0; i<cops.length; i++){
                         if(cops[i].checkIntersect(playerRect)){
-                            endGame();
+                            if(cops[i].getView().getVisibility() == View.VISIBLE) {
+                                endGame();
+                            }
                         }
                     }
 
@@ -472,6 +496,21 @@ public class GameScreenActivity extends AppCompatActivity {
 
                     }
 
+                    for(int i=0; i<cops.length; i++){
+                        if(cops[i].getPosY() < 55){
+                            cops[i].setDirection(1);
+                        }
+                        if(cops[i].getPosY() > 905){
+                            cops[i].setDirection(3);
+                        }
+                        if(cops[i].getPosX() < -1){
+                            cops[i].setDirection(2);
+                        }
+                        if(cops[i].getPosX() > 1705){
+                            cops[i].setDirection(4);
+                        }
+
+                        }
 
 
                     spawnMoreCops();
@@ -500,6 +539,14 @@ public class GameScreenActivity extends AppCompatActivity {
         guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
+        endScreen();
+
+    }
+
+    public void endScreen(){
+
+        Intent intent = new Intent(this, endgame_activity.class);
+        startActivity(intent);
     }
 
 
