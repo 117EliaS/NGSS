@@ -379,15 +379,18 @@ public class GameScreenActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    for(int i=0; i < footballers.length; i++){
-                        footballers[i].move();
-                    }
+                    if (gameOn) {
 
-                    for(int i=0; i < cops.length; i++){
-                        cops[i].move((int) playerView.getX(), (int) playerView.getY());
-                    }
+                        for (int i = 0; i < footballers.length; i++) {
+                            footballers[i].move();
+                        }
 
-                    handler.postDelayed(this, 2);
+                        for (int i = 0; i < cops.length; i++) {
+                            cops[i].move((int) playerView.getX(), (int) playerView.getY());
+                        }
+
+                        handler.postDelayed(this, 2);
+                    }
                 }
             });
         }
@@ -516,7 +519,7 @@ public class GameScreenActivity extends AppCompatActivity {
         guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
-        endScreen();
+        //endScreen();
 
     }
 
@@ -529,30 +532,34 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void changePlayerDirUp(View v){
 
+        if(gameOn) {
 
             playerChangeAnimUp(v);
             stopRunningPlayer();
             setPlayerDirection(0);
             startRunningPlayer();
 
-
+        }
 
 
     }
     public void changePlayerDirDown(View v){
 
+        if(gameOn) {
 
             playerChangeAnimDown(v);
             stopRunningPlayer();
             setPlayerDirection(1);
             startRunningPlayer();
 
-
+        }
 
 
 
     }
     public void changePlayerDirLeft(View v){
+
+        if (gameOn) {
 
 
             playerChangeAnimLeft(v);
@@ -560,20 +567,21 @@ public class GameScreenActivity extends AppCompatActivity {
             setPlayerDirection(2);
             startRunningPlayer();
 
-
+        }
 
 
 
     }
     public void changePlayerDirRight(View v){
 
+        if(gameOn) {
 
             playerChangeAnimRight(v);
             stopRunningPlayer();
             setPlayerDirection(3);
             startRunningPlayer();
 
-
+        }
 
 
 
@@ -599,20 +607,23 @@ public class GameScreenActivity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    int posx = (int) player.getX();
-                    int posy = (int) player.getY();
+                    if (gameOn) {
 
-                    if (playerDirection == 0) {
-                        player.setY(posy - 5);
-                    } else if (playerDirection == 1) {
-                        player.setY(posy + 5);
-                    } else if (playerDirection == 2) {
-                        player.setX(posx - 5);
-                    } else {
-                        player.setX(posx + 5);
+                        int posx = (int) player.getX();
+                        int posy = (int) player.getY();
+
+                        if (playerDirection == 0) {
+                            player.setY(posy - 5);
+                        } else if (playerDirection == 1) {
+                            player.setY(posy + 5);
+                        } else if (playerDirection == 2) {
+                            player.setX(posx - 5);
+                        } else {
+                            player.setX(posx + 5);
+                        }
+
+                        handler.postDelayed(this, 2);
                     }
-
-                    handler.postDelayed(this, 2);
                 }
             });
         }
