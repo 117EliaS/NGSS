@@ -11,14 +11,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
-import java.util.Random;
 
 public class GameScreenActivity extends AppCompatActivity {
 
@@ -27,8 +25,6 @@ public class GameScreenActivity extends AppCompatActivity {
     private boolean running = false;
     private boolean runningPlayer = false;
     private Rect playerRect;
-    private Rect guardRect;
-    private Rect footballRect;
     private boolean gameOn = false;
     private AnimationDrawable playerFrameAnimation;
     private AnimationDrawable guardFrameAnimation1;
@@ -47,20 +43,20 @@ public class GameScreenActivity extends AppCompatActivity {
     private int copsSpawned = 1;
     private int footballRotation = 0;
 
-    private int playerDirection = 0; //0 Up, 1 Down, 2 Left, 3 Right
+    private int playerDirection = 3; //0 Up, 1 Down, 2 Left, 3 Right
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
-        Button upArrow = (Button) findViewById(R.id.buttonUp);
+        Button upArrow = findViewById(R.id.buttonUp);
 
-        Button downArrow = (Button) findViewById(R.id.buttonDown);
+        Button downArrow = findViewById(R.id.buttonDown);
 
-        Button leftArrow = (Button) findViewById(R.id.buttonLeft);
+        Button leftArrow = findViewById(R.id.buttonLeft);
 
-        Button rightArrow = (Button) findViewById(R.id.buttonRight);
+        Button rightArrow = findViewById(R.id.buttonRight);
 
         upArrow.getBackground().setAlpha(200);
         downArrow.getBackground().setAlpha(200);
@@ -75,111 +71,111 @@ public class GameScreenActivity extends AppCompatActivity {
         gameOn = true;
 
         //Beginning animations
-        ImageView player = findViewById(R.id.playerImageView);
-        player.setBackgroundResource(R.drawable.player_animation_up);
+        ImageView playerView = findViewById(R.id.playerImageView);
+        playerView.setBackgroundResource(R.drawable.player_animation_right);
 
-        playerFrameAnimation = (AnimationDrawable) player.getBackground();
+        playerFrameAnimation = (AnimationDrawable) playerView.getBackground();
 
         playerFrameAnimation.start();
 
         //----
 
-        ImageView guard1 = findViewById(R.id.guardImageView1);
-        guard1.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView1 = findViewById(R.id.guardImageView1);
+        guardView1.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation1 = (AnimationDrawable) guard1.getBackground();
+        guardFrameAnimation1 = (AnimationDrawable) guardView1.getBackground();
 
         guardFrameAnimation1.start();
 
         //----
 
-        ImageView guard2 = findViewById(R.id.guardImageView2);
-        guard2.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView2 = findViewById(R.id.guardImageView2);
+        guardView2.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation2 = (AnimationDrawable) guard2.getBackground();
+        guardFrameAnimation2 = (AnimationDrawable) guardView2.getBackground();
 
         guardFrameAnimation2.start();
 
         //----
 
-        ImageView guard3 = findViewById(R.id.guardImageView3);
-        guard3.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView3 = findViewById(R.id.guardImageView3);
+        guardView3.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation3 = (AnimationDrawable) guard3.getBackground();
+        guardFrameAnimation3 = (AnimationDrawable) guardView3.getBackground();
 
         guardFrameAnimation3.start();
 
         //----
-        ImageView guard4 = findViewById(R.id.guardImageView4);
-        guard4.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView4 = findViewById(R.id.guardImageView4);
+        guardView4.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation4 = (AnimationDrawable) guard4.getBackground();
+        guardFrameAnimation4 = (AnimationDrawable) guardView4.getBackground();
 
         guardFrameAnimation4.start();
 
         //----
 
-        ImageView guard5 = findViewById(R.id.guardImageView5);
-        guard5.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView5 = findViewById(R.id.guardImageView5);
+        guardView5.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation5 = (AnimationDrawable) guard5.getBackground();
+        guardFrameAnimation5 = (AnimationDrawable) guardView5.getBackground();
 
         guardFrameAnimation5.start();
 
         //----
 
-        ImageView guard6 = findViewById(R.id.guardImageView6);
-        guard6.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView6 = findViewById(R.id.guardImageView6);
+        guardView6.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation6 = (AnimationDrawable) guard6.getBackground();
+        guardFrameAnimation6 = (AnimationDrawable) guardView6.getBackground();
 
         guardFrameAnimation6.start();
 
         //----
 
-        ImageView guard7 = findViewById(R.id.guardImageView7);
-        guard7.setBackgroundResource(R.drawable.cop_animation_up);
+        ImageView guardView7 = findViewById(R.id.guardImageView7);
+        guardView7.setBackgroundResource(R.drawable.cop_animation_up);
 
-        guardFrameAnimation7 = (AnimationDrawable) guard7.getBackground();
+        guardFrameAnimation7 = (AnimationDrawable) guardView7.getBackground();
 
         guardFrameAnimation7.start();
 
         //----
 
 
-        ImageView football1 = findViewById(R.id.footballImageView1);
-        football1.setBackgroundResource(R.drawable.footballer_animation_up);
+        ImageView footballView1 = findViewById(R.id.footballImageView1);
+        footballView1.setBackgroundResource(R.drawable.footballer_animation_up);
 
-        footballFrameAnimation1 = (AnimationDrawable) football1.getBackground();
+        footballFrameAnimation1 = (AnimationDrawable) footballView1.getBackground();
 
         footballFrameAnimation1.start();
 
         //----
 
-        ImageView football2 = findViewById(R.id.footballImageView2);
-        football2.setBackgroundResource(R.drawable.footballer_animation_up);
+        ImageView footballView2 = findViewById(R.id.footballImageView2);
+        footballView2.setBackgroundResource(R.drawable.footballer_animation_up);
 
-        footballFrameAnimation2 = (AnimationDrawable) football2.getBackground();
+        footballFrameAnimation2 = (AnimationDrawable) footballView2.getBackground();
 
         footballFrameAnimation2.start();
 
         //----
 
 
-        ImageView football3 = findViewById(R.id.footballImageView3);
-        football3.setBackgroundResource(R.drawable.footballer_animation_up);
+        ImageView footballView3 = findViewById(R.id.footballImageView3);
+        footballView3.setBackgroundResource(R.drawable.footballer_animation_up);
 
-        footballFrameAnimation3 = (AnimationDrawable) football3.getBackground();
+        footballFrameAnimation3 = (AnimationDrawable) footballView3.getBackground();
 
         footballFrameAnimation3.start();
 
         //----
 
 
-        ImageView football4 = findViewById(R.id.footballImageView4);
-        football4.setBackgroundResource(R.drawable.footballer_animation_up);
+        ImageView footballView4 = findViewById(R.id.footballImageView4);
+        footballView4.setBackgroundResource(R.drawable.footballer_animation_up);
 
-        footballFrameAnimation4 = (AnimationDrawable) football4.getBackground();
+        footballFrameAnimation4 = (AnimationDrawable) footballView4.getBackground();
 
         footballFrameAnimation4.start();
 
@@ -188,21 +184,6 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         //hitBoxes for the imageViews
-        ImageView playerView = findViewById(R.id.playerImageView);
-
-        ImageView guardView1 = findViewById(R.id.guardImageView1);
-        ImageView guardView2 = findViewById(R.id.guardImageView2);
-        ImageView guardView3 = findViewById(R.id.guardImageView3);
-        ImageView guardView4 = findViewById(R.id.guardImageView4);
-        ImageView guardView5 = findViewById(R.id.guardImageView5);
-        ImageView guardView6 = findViewById(R.id.guardImageView6);
-        ImageView guardView7 = findViewById(R.id.guardImageView7);
-
-        ImageView footballView1 = findViewById(R.id.footballImageView1);
-        ImageView footballView2 = findViewById(R.id.footballImageView2);
-        ImageView footballView3 = findViewById(R.id.footballImageView3);
-        ImageView footballView4 = findViewById(R.id.footballImageView4);
-
         playerRect = new Rect();
 
         footballers = new Footballer[] {new Footballer(0, 0, footballView1, 2),
@@ -210,13 +191,13 @@ public class GameScreenActivity extends AppCompatActivity {
                 new Footballer(0, 0, footballView3, 2),
                 new Footballer(0, 0, footballView4, 2)};
 
-        cops = new Cop[] {new Cop(0, 0, guardView1, .9),
-                new Cop(0, 0, guardView2, .9),
-                new Cop(0, 0, guardView3, .9),
-                new Cop(0, 0, guardView4, .9),
-                new Cop(0, 0, guardView5, .9),
-                new Cop(0, 0, guardView6, .9),
-                new Cop(0, 0, guardView7, .9)};
+        cops = new Cop[] {new Cop(0, 0, guardView1, .5),
+                new Cop(0, 0, guardView2, .5),
+                new Cop(0, 0, guardView3, .5),
+                new Cop(0, 0, guardView4, .5),
+                new Cop(0, 0, guardView5, .5),
+                new Cop(0, 0, guardView6, .5),
+                new Cop(0, 0, guardView7, .5)};
 
         cops[1].getView().setVisibility(View.INVISIBLE);
         cops[2].getView().setVisibility(View.INVISIBLE);
@@ -258,7 +239,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         int posDownSide = 60 + (int)(Math.random() * 850);
 
-        if(secs > 4 && copsSpawned == 1){
+        if(secs > 10 && copsSpawned == 1){
 
 
             if(side == 1) {
@@ -279,7 +260,7 @@ public class GameScreenActivity extends AppCompatActivity {
             copsSpawned++;
         }
 
-        if(secs > 8 && copsSpawned == 2){
+        if(secs > 20 && copsSpawned == 2){
 
 
             if(side == 1) {
@@ -300,7 +281,7 @@ public class GameScreenActivity extends AppCompatActivity {
             copsSpawned++;
         }
 
-        if(secs > 12 && copsSpawned == 3){
+        if(secs > 30 && copsSpawned == 3){
 
 
             if(side == 1) {
@@ -321,7 +302,7 @@ public class GameScreenActivity extends AppCompatActivity {
             copsSpawned++;
         }
 
-        if(secs > 16 && copsSpawned == 4){
+        if(secs > 40 && copsSpawned == 4){
 
 
 
@@ -344,7 +325,7 @@ public class GameScreenActivity extends AppCompatActivity {
             copsSpawned++;
         }
 
-        if(secs > 20 && copsSpawned == 5){
+        if(secs > 50 && copsSpawned == 5){
 
 
             if(side == 1) {
@@ -365,7 +346,7 @@ public class GameScreenActivity extends AppCompatActivity {
             copsSpawned++;
         }
 
-        if(secs > 24 && copsSpawned == 6){
+        if(secs > 60 && copsSpawned == 6){
 
 
             if(side == 1) {
@@ -392,7 +373,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void moveEnemies(){
         final ImageView playerView = findViewById(R.id.playerImageView);
 
-        if(gameOn = true) {
+        if(gameOn) {
             final Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
@@ -416,7 +397,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
 
-        if(gameOn = true) {
+        if(gameOn) {
             final Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
@@ -466,7 +447,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         final ImageView playerView = findViewById(R.id.playerImageView);
 
-        if(gameOn = true) {
+        if(gameOn) {
             final Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
@@ -475,25 +456,21 @@ public class GameScreenActivity extends AppCompatActivity {
                     playerView.getHitRect(playerRect);
 
                     for(int i=0; i<footballers.length; i++){
-                        if(footballers[i].checkIntersect(playerRect)){
-                            if(footballers[i].getView().getVisibility() == View.VISIBLE) {
-                                endGame();
-                            }
+                        if(footballers[i].checkIntersect(playerRect) &&
+                                footballers[i].getView().getVisibility() == View.VISIBLE){
+                            endGame();
                         }
                     }
 
                     for(int i=0; i<cops.length; i++){
-                        if(cops[i].checkIntersect(playerRect)){
-                            if(cops[i].getView().getVisibility() == View.VISIBLE) {
-                                endGame();
-                            }
+                        if(cops[i].checkIntersect(playerRect) &&
+                                cops[i].getView().getVisibility() == View.VISIBLE){
+                            endGame();
                         }
                     }
 
                     if(playerView.getY() < 60 || playerView.getY() > 900 || playerView.getX() < 10 || playerView.getX() > 1700){
-
                         endGame();
-
                     }
 
                     for(int i=0; i<cops.length; i++){
@@ -523,9 +500,9 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void endGame(){
 
+        gameOn = false;
         stopRunningPlayer();
         stopTimer();
-        gameOn = false;
         footballFrameAnimation1.stop();
         footballFrameAnimation2.stop();
         footballFrameAnimation3.stop();
@@ -547,8 +524,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, endgame_activity.class);
         startActivity(intent);
+        this.finish();
     }
-
 
     public void changePlayerDirUp(View v){
 
@@ -615,50 +592,28 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void movePlayer(){
 
-        final ImageView player = (ImageView) findViewById(R.id.playerImageView);
+        final ImageView player = findViewById(R.id.playerImageView);
 
-
-
-        int posx = (int) player.getX();
-        int posy = (int) player.getY();
-
-        if(runningPlayer = true && gameOn == true) {
+        if(runningPlayer && gameOn) {
             final Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-
-                    if (runningPlayer == true) {
-
-
                     int posx = (int) player.getX();
                     int posy = (int) player.getY();
 
                     if (playerDirection == 0) {
-
                         player.setY(posy - 5);
-
-                    }
-                    if (playerDirection == 1) {
-
+                    } else if (playerDirection == 1) {
                         player.setY(posy + 5);
-
-                    }
-                    if (playerDirection == 2) {
-
+                    } else if (playerDirection == 2) {
                         player.setX(posx - 5);
-
-                    }
-                    if (playerDirection == 3) {
-
+                    } else {
                         player.setX(posx + 5);
-
                     }
-
 
                     handler.postDelayed(this, 2);
                 }
-            }
             });
         }
     }
@@ -742,98 +697,6 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
-    //Changes the animations for the guard character
-    public void guardChangeAnimUp(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.cop_animation_up);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void guardChangeAnimDown(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.cop_animation_down);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void guardChangeAnimLeft(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.cop_animation_left);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void guardChangeAnimRight(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.cop_animation_right);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    //Changes the animations for the football character
-    public void footballChangeAnimUp(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.footballer_animation_up);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void footballChangeAnimDown(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.footballer_animation_down);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void footballChangeAnimLeft(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.footballer_animation_left);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-    public void footballChangeAnimRight(ImageView v){
-
-        ImageView img = v;
-        img.setBackgroundResource(R.drawable.footballer_animation_right);
-
-        AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
-
-        frameAnimation.start();
-
-    }
-
-
-
     // Start stopwatch when the game starts
     public void startTimer(){
 
@@ -860,7 +723,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     private void runTimer(){
 
-        final TextView timeView = (TextView) findViewById(R.id.time_view);
+        final TextView timeView = findViewById(R.id.time_view);
         final Handler handler = new Handler();
         handler.post(new Runnable(){
             @Override
@@ -886,9 +749,6 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
         });
-
-
-
     }
 
     public void setPlayerDirection(int playerDirection) {

@@ -85,12 +85,12 @@ public class Cop extends Enemy{
         int distanceX = Math.abs(playerX - posX);
         int distanceY = Math.abs(playerY - posY);
 
-        // If direction is already defined, check to see if change is necessary.
-
-        // Direction was already defined, run AI magic
-        // Test if successfully reached player on either axis
+        // Check if timer reached 0. if so, change direction
         if(runTimer <= 0){
+            // Should he move toward player?
             if(Math.random() <= bias){
+                // Yes, run super advanced AI code
+                // Check status based on player position
                 if (distanceY <= SENSITIVITY) {
                     // Reached Y value, chase on X axis
                     if (playerX > posX) {
@@ -105,8 +105,26 @@ public class Cop extends Enemy{
                     } else if(playerY < posY){
                         direction = 3;
                     }
+                } else {
+                    // Not aligned with player, which distance is greater?
+                    if(distanceX >= distanceY){
+                        // Farther from player on x-axis. Chase on x-axis.
+                        if (playerX > posX) {
+                            direction = 2;
+                        } else if(playerX < posX){
+                            direction = 4;
+                        }
+                    } else {
+                        // Farther from player on y-axis. Chase on y-axis.
+                        if (playerY > posY) {
+                            direction = 1;
+                        } else if(playerY < posY){
+                            direction = 3;
+                        }
+                    }
                 }
             } else {
+                // No, run even more advanced AI
                 direction = (int) (Math.random() * 4) + 1;
             }
 
