@@ -34,6 +34,7 @@ public class Footballer extends Enemy{
         imageView.setY(posY);
         this.hitbox = new Rect();
         imageView.getHitRect(this.hitbox);
+        hitbox.set(hitbox.left-40, hitbox.top-40, hitbox.right-40, hitbox.top-40);
 
         imageView.setBackgroundResource(R.drawable.footballer_animation_down);
         this.animation = (AnimationDrawable) imageView.getBackground();
@@ -65,7 +66,9 @@ public class Footballer extends Enemy{
 
     public boolean checkIntersect(Rect playerHitbox){
         imageView.getHitRect(this.hitbox);
+        this.hitbox.set(hitbox.left-40, hitbox.top-40, hitbox.right-40, hitbox.top-40);
         return Rect.intersects(playerHitbox, hitbox);
+
     }
 
     public ImageView getView(){
