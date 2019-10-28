@@ -20,14 +20,14 @@ public class Cop extends Enemy{
     private Rect hitbox;
     private AnimationDrawable animation;
 
-    public Cop(int posX, int posY, ImageView imageView, double bias){
+    public Cop(int posX, int posY, ImageView imageView){
         super();
 
         this.direction = 1;
         this.posX = posX;
         this.posY = posY;
         this.runTimer = 0;
-        this.bias = bias;
+        this.bias = .3;
 
         this.imageView = imageView;
         this.hitbox = new Rect();

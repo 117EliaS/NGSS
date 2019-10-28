@@ -43,7 +43,7 @@
 
     <Button
         android:id="@+id/buttonUp"
-        android:layout_width="54dp"
+        android:layout_width="70dp"
         android:layout_height="54dp"
         android:alpha="64"
         android:background="@drawable/arrow_up"
@@ -59,22 +59,22 @@
 
     <Button
         android:id="@+id/buttonLeft"
-        android:layout_width="54dp"
+        android:layout_width="70dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_left"
         android:onClick="changePlayerDirLeft"
         android:text=""
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonDown"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.932" />
 
     <Button
         android:id="@+id/buttonRight"
-        android:layout_width="54dp"
+        android:layout_width="70dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_right"
         android:onClick="changePlayerDirRight"
@@ -82,14 +82,14 @@
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/buttonDown"
+        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.932" />
 
     <Button
         android:id="@+id/buttonDown"
-        android:layout_width="54dp"
+        android:layout_width="70dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_down"
         android:onClick="changePlayerDirDown"
