@@ -43,23 +43,23 @@
 
     <Button
         android:id="@+id/buttonUp"
-        android:layout_width="70dp"
+        android:layout_width="54dp"
         android:layout_height="54dp"
         android:alpha="64"
         android:background="@drawable/arrow_up"
         android:onClick="changePlayerDirUp"
         android:text=""
         android:textSize="@dimen/menuFont"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonLeft"
-        android:layout_width="70dp"
+        android:layout_width="54dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_left"
         android:onClick="changePlayerDirLeft"
@@ -70,11 +70,11 @@
         app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.984" />
 
     <Button
         android:id="@+id/buttonRight"
-        android:layout_width="70dp"
+        android:layout_width="54dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_right"
         android:onClick="changePlayerDirRight"
@@ -82,14 +82,14 @@
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.984" />
 
     <Button
         android:id="@+id/buttonDown"
-        android:layout_width="70dp"
+        android:layout_width="54dp"
         android:layout_height="54dp"
         android:background="@drawable/arrow_down"
         android:onClick="changePlayerDirDown"
@@ -97,10 +97,10 @@
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.984" />
 
     <ImageView
         android:id="@+id/playerImageView"

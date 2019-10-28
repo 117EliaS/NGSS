@@ -191,13 +191,13 @@ public class GameScreenActivity extends AppCompatActivity {
                 new Footballer(0, 0, footballView3, 2),
                 new Footballer(0, 0, footballView4, 2)};
 
-        cops = new Cop[] {new Cop(0, 0, guardView1, .5),
-                new Cop(0, 0, guardView2, .5),
-                new Cop(0, 0, guardView3, .5),
-                new Cop(0, 0, guardView4, .5),
-                new Cop(0, 0, guardView5, .5),
-                new Cop(0, 0, guardView6, .5),
-                new Cop(0, 0, guardView7, .5)};
+        cops = new Cop[] {new Cop(0, 0, guardView1),
+                new Cop(0, 0, guardView2),
+                new Cop(0, 0, guardView3),
+                new Cop(0, 0, guardView4),
+                new Cop(0, 0, guardView5),
+                new Cop(0, 0, guardView6),
+                new Cop(0, 0, guardView7)};
 
         cops[1].getView().setVisibility(View.INVISIBLE);
         cops[2].getView().setVisibility(View.INVISIBLE);
@@ -516,7 +516,7 @@ public class GameScreenActivity extends AppCompatActivity {
         guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
-        endScreen();
+        //endScreen();
 
     }
 
