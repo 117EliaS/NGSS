@@ -523,9 +523,11 @@ public class GameScreenActivity extends AppCompatActivity {
         guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
-        this.finish();
 
-        endScreen();
+
+        //this.finish();
+
+        //endScreen();
 
 
 
@@ -535,7 +537,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, endgame_activity.class);
         startActivity(intent);
-        this.finish();
+        finish();
     }
 
     public void changePlayerDirUp(View v){
