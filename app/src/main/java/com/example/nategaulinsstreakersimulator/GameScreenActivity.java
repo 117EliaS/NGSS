@@ -460,7 +460,7 @@ public class GameScreenActivity extends AppCompatActivity {
                     playerRect.set(playerRect.left-5, playerRect.top-5, playerRect.right-5, playerRect.bottom-5);
                     playerView.getHitRect(playerRect);
 
-                    playerRect.set(playerRect.left-10, playerRect.top-10, playerRect.right-10, playerRect.bottom-10);
+                    playerRect.set(playerRect.left+10, playerRect.top+10, playerRect.right-10, playerRect.bottom-10);
 
                     for(int i=0; i<footballers.length; i++){
                         if(footballers[i].checkIntersect(playerRect) &&
@@ -523,7 +523,11 @@ public class GameScreenActivity extends AppCompatActivity {
         guardFrameAnimation7.stop();
         playerFrameAnimation.stop();
 
-        //endScreen();
+        this.finish();
+
+        endScreen();
+
+
 
     }
 

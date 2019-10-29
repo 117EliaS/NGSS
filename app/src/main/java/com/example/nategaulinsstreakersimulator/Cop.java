@@ -31,7 +31,7 @@ public class Cop extends Enemy{
 
         this.imageView = imageView;
         this.hitbox = new Rect();
-        hitbox.set(hitbox.left-3, hitbox.top-3, hitbox.right-3, hitbox.bottom-3);
+        hitbox.set(hitbox.left+30, hitbox.top+30, hitbox.right-30, hitbox.bottom-30);
         imageView.getHitRect(this.hitbox);
 
         imageView.setBackgroundResource(R.drawable.cop_animation_down);
@@ -70,7 +70,7 @@ public class Cop extends Enemy{
     public boolean checkIntersect(Rect playerHitbox){
         hitbox.set(hitbox.left-10, hitbox.top-10, hitbox.right-10, hitbox.bottom-10);
         imageView.getHitRect(this.hitbox);
-        hitbox.set(hitbox.left-40, hitbox.top-40, hitbox.right-40, hitbox.bottom-40);
+        hitbox.set(hitbox.left+30, hitbox.top+30, hitbox.right-40, hitbox.bottom-40);
         return Rect.intersects(playerHitbox, hitbox);
     }
 
