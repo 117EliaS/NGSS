@@ -19,7 +19,7 @@ public class endgame_activity extends AppCompatActivity {
     }
 
     public void returnToMenu(View v){
-        Intent intent = new Intent(this, GameScreenActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private Cop[] cops;
     private int copsSpawned = 1;
     private int footballRotation = 0;
+    private int timesEnded = 0;
 
     private int playerDirection = 3; //0 Up, 1 Down, 2 Left, 3 Right
 
@@ -507,33 +509,45 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void endGame(){
 
-        gameOn = false;
-        stopRunningPlayer();
-        stopTimer();
-        footballFrameAnimation1.stop();
-        footballFrameAnimation2.stop();
-        footballFrameAnimation3.stop();
-        footballFrameAnimation4.stop();
-        guardFrameAnimation1.stop();
-        guardFrameAnimation2.stop();
-        guardFrameAnimation3.stop();
-        guardFrameAnimation4.stop();
-        guardFrameAnimation5.stop();
-        guardFrameAnimation6.stop();
-        guardFrameAnimation7.stop();
-        playerFrameAnimation.stop();
+        if(timesEnded == 0) {
 
-        this.finish();
-
-        endScreen();
+            gameOn = false;
+            stopRunningPlayer();
+            stopTimer();
 
 
+            footballFrameAnimation1.stop();
+            footballFrameAnimation2.stop();
+            footballFrameAnimation3.stop();
+            footballFrameAnimation4.stop();
+            guardFrameAnimation1.stop();
+            guardFrameAnimation2.stop();
+            guardFrameAnimation3.stop();
+            guardFrameAnimation4.stop();
+            guardFrameAnimation5.stop();
+            guardFrameAnimation6.stop();
+            guardFrameAnimation7.stop();
+            playerFrameAnimation.stop();
+
+
+            ConstraintLayout gameScreen = findViewById(R.id.gameScreen);
+
+            gameScreen.clearAnimation();
+
+            gameScreen.clearFocus();
+
+
+
+            endScreen();
+
+            timesEnded++;
+        }
 
     }
 
     public void endScreen(){
 
-        Intent intent = new Intent(this, endgame_activity.class);
+        Intent intent = new Intent(this,endgame_activity.class);
         startActivity(intent);
         this.finish();
     }
