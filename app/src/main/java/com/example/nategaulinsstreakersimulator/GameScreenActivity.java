@@ -42,6 +42,8 @@ public class GameScreenActivity extends AppCompatActivity {
     private Cop[] cops;
     private int copsSpawned = 1;
     private int footballRotation = 0;
+    private int timesEnded = 0;
+    private String timeFormatted;
 
     private int playerDirection = 3; //0 Up, 1 Down, 2 Left, 3 Right
 
@@ -507,25 +509,31 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public void endGame(){
 
-        gameOn = false;
-        stopRunningPlayer();
-        stopTimer();
-        footballFrameAnimation1.stop();
-        footballFrameAnimation2.stop();
-        footballFrameAnimation3.stop();
-        footballFrameAnimation4.stop();
-        guardFrameAnimation1.stop();
-        guardFrameAnimation2.stop();
-        guardFrameAnimation3.stop();
-        guardFrameAnimation4.stop();
-        guardFrameAnimation5.stop();
-        guardFrameAnimation6.stop();
-        guardFrameAnimation7.stop();
-        playerFrameAnimation.stop();
+        if(timesEnded == 0) {
 
-        this.finish();
+            gameOn = false;
+            stopRunningPlayer();
+            stopTimer();
+            footballFrameAnimation1.stop();
+            footballFrameAnimation2.stop();
+            footballFrameAnimation3.stop();
+            footballFrameAnimation4.stop();
+            guardFrameAnimation1.stop();
+            guardFrameAnimation2.stop();
+            guardFrameAnimation3.stop();
+            guardFrameAnimation4.stop();
+            guardFrameAnimation5.stop();
+            guardFrameAnimation6.stop();
+            guardFrameAnimation7.stop();
+            playerFrameAnimation.stop();
 
-        endScreen();
+            this.finish();
+
+            endScreen();
+
+            timesEnded++;
+
+        }
 
 
 
@@ -534,6 +542,10 @@ public class GameScreenActivity extends AppCompatActivity {
     public void endScreen(){
 
         Intent intent = new Intent(this, endgame_activity.class);
+
+
+        intent.putExtra(endgame_activity.TIME, timeFormatted);
+
         startActivity(intent);
         this.finish();
     }
@@ -757,6 +769,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
 
                 String time = String.format(Locale.getDefault(), "%02d:%02d:%01d", minutes, secs, milsec);
+                timeFormatted = String.format(Locale.getDefault(), "%02d:%02d:%01d", minutes, secs, milsec+1);
+
 
                 timeView.setText(time);
 
