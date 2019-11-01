@@ -3,7 +3,10 @@ package com.example.nategaulinsstreakersimulator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,24 +22,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(whichScreen == 0) {
-
-            ImageView titleScreen = (ImageView) findViewById(R.id.menuBackground);
-            titleScreen.setBackgroundResource(R.drawable.title_screen_animation);
-
-            AnimationDrawable title = (AnimationDrawable) titleScreen.getBackground();
-
-            title.start();
-
-
-
-
+            ImageView titlescreeeeeeen = (ImageView) findViewById(R.id.menuBackground);
+            BitmapDrawable titleScreen_drawable = (BitmapDrawable) getDrawable(R.drawable.titlescreeeeeen);
+            Bitmap titleScreen_bmp = Bitmap.createScaledBitmap(titleScreen_drawable.getBitmap(), 1920, 1920, false);
+            Drawable titleScreen_done = new BitmapDrawable(getResources(), titleScreen_bmp);
+            titlescreeeeeeen.setBackground(titleScreen_done);
         }
 
         else{
-
-            ImageView titleScreen = (ImageView) findViewById(R.id.menuBackground);
-
-            titleScreen.setBackgroundResource(R.drawable.gameoverscreen);
+            ImageView gameoverscreen = (ImageView) findViewById(R.id.menuBackground);
+            BitmapDrawable gameoverscreen_drawable = (BitmapDrawable) getDrawable(R.drawable.gameoverscreen);
+            Bitmap gameoverscreen_bmp = Bitmap.createScaledBitmap(gameoverscreen_drawable.getBitmap(), 1920, 1920, false);
+            Drawable gameoverscreen_done = new BitmapDrawable(getResources(), gameoverscreen_bmp);
+            gameoverscreen.setBackground(gameoverscreen_done);
 
             Button button = (Button) findViewById(R.id.button);
 
