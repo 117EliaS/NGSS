@@ -60,10 +60,29 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Button rightArrow = findViewById(R.id.buttonRight);
 
-        upArrow.getBackground().setAlpha(200);
-        downArrow.getBackground().setAlpha(200);
-        leftArrow.getBackground().setAlpha(200);
-        rightArrow.getBackground().setAlpha(200);
+        BitmapDrawable arrow_up = (BitmapDrawable) getDrawable(R.drawable.arrow_up);
+        Bitmap arrow_up_bmp = Bitmap.createScaledBitmap(arrow_up.getBitmap(), 1920, 1920, false);
+        Drawable arrow_up_done = new BitmapDrawable(getResources(), arrow_up_bmp);
+        upArrow.setBackground(arrow_up_done);
+        upArrow.getBackground().setAlpha(220);
+
+        BitmapDrawable arrow_left = (BitmapDrawable) getDrawable(R.drawable.arrow_left);
+        Bitmap arrow_left_bmp = Bitmap.createScaledBitmap(arrow_left.getBitmap(), 1920, 1920, false);
+        Drawable arrow_left_done = new BitmapDrawable(getResources(), arrow_left_bmp);
+        leftArrow.setBackground(arrow_left_done);
+        leftArrow.getBackground().setAlpha(220);
+
+        BitmapDrawable arrow_right = (BitmapDrawable) getDrawable(R.drawable.arrow_right);
+        Bitmap arrow_right_bmp = Bitmap.createScaledBitmap(arrow_right.getBitmap(), 1920, 1920, false);
+        Drawable arrow_right_done = new BitmapDrawable(getResources(), arrow_right_bmp);
+        rightArrow.setBackground(arrow_right_done);
+        rightArrow.getBackground().setAlpha(220);
+
+        BitmapDrawable arrow_down = (BitmapDrawable) getDrawable(R.drawable.arrow_down);
+        Bitmap arrow_down_bmp = Bitmap.createScaledBitmap(arrow_down.getBitmap(), 1920, 1920, false);
+        Drawable arrow_down_done = new BitmapDrawable(getResources(), arrow_down_bmp);
+        downArrow.setBackground(arrow_down_done);
+        downArrow.getBackground().setAlpha(220);
 
         // Timer shit
         runTimer();
@@ -224,10 +243,11 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
     //Busted, dont touch
+    //Busted, dont touch
     public void fixBackground(){
 
         BitmapDrawable field = (BitmapDrawable) getDrawable(R.drawable.field);
-        Bitmap fieldFixed = Bitmap.createScaledBitmap(field.getBitmap(),1920,1080,true);
+        Bitmap fieldFixed = Bitmap.createScaledBitmap(field.getBitmap(),1920,1080,false);
         Drawable fieldDone = new BitmapDrawable(getResources(), fieldFixed);
         ConstraintLayout gameScreen = findViewById(R.id.gameScreen);
 
