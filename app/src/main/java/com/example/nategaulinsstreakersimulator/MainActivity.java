@@ -11,14 +11,14 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int whichScreen = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(whichScreen == 0) {
+
 
             ImageView titleScreen = (ImageView) findViewById(R.id.menuBackground);
             titleScreen.setBackgroundResource(R.drawable.title_screen_animation);
@@ -26,23 +26,6 @@ public class MainActivity extends AppCompatActivity {
             AnimationDrawable title = (AnimationDrawable) titleScreen.getBackground();
 
             title.start();
-
-
-
-
-        }
-
-        else{
-
-            ImageView titleScreen = (ImageView) findViewById(R.id.menuBackground);
-
-            titleScreen.setBackgroundResource(R.drawable.gameoverscreen);
-
-            Button button = (Button) findViewById(R.id.button);
-
-            button.setBackgroundResource(R.drawable.restartbutton);
-
-        }
 
     }
 

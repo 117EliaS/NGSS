@@ -498,8 +498,38 @@ public class GameScreenActivity extends AppCompatActivity {
                         }
                     }
 
+                    /*
                     if(playerView.getY() < 60 || playerView.getY() > 900 || playerView.getX() < 10 || playerView.getX() > 1700){
-                        endGame();
+
+
+                        stopRunningPlayer();
+                        //endGame();
+                    }
+                    */
+
+
+                    if(playerView.getY() < 60){
+
+                        stopRunningPlayer();
+                        playerView.setY(61);
+                    }
+
+                    if(playerView.getY() > 900){
+
+                        stopRunningPlayer();
+                        playerView.setY(898);
+                    }
+
+                    if(playerView.getX() < 50){
+
+                        stopRunningPlayer();
+                        playerView.setX(51);
+                    }
+
+                    if(playerView.getX() > 1750){
+
+                        stopRunningPlayer();
+                        playerView.setX(1749);
                     }
 
                     for(int i=0; i<cops.length; i++){
