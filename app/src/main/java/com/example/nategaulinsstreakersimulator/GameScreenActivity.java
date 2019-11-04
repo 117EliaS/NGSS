@@ -26,6 +26,8 @@ public class GameScreenActivity extends AppCompatActivity {
     private boolean runningPlayer = false;
     private Rect playerRect;
     private boolean gameOn = false;
+
+    // Drawables for each entity to be displayed
     private AnimationDrawable playerFrameAnimation;
     private AnimationDrawable guardFrameAnimation1;
     private AnimationDrawable guardFrameAnimation2;
@@ -38,9 +40,11 @@ public class GameScreenActivity extends AppCompatActivity {
     private AnimationDrawable footballFrameAnimation2;
     private AnimationDrawable footballFrameAnimation3;
     private AnimationDrawable footballFrameAnimation4;
+
     private Footballer[] footballers;
     private Cop[] cops;
     private int copsSpawned = 1;
+    private int copInterval = 10;
     private int footballRotation = 0;
     private int timesEnded = 0;
     private String timeFormatted;
@@ -52,6 +56,7 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        // Grab buttons
         Button upArrow = findViewById(R.id.buttonUp);
 
         Button downArrow = findViewById(R.id.buttonDown);
@@ -60,6 +65,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Button rightArrow = findViewById(R.id.buttonRight);
 
+        // Make buttons look nice
         BitmapDrawable arrow_up = (BitmapDrawable) getDrawable(R.drawable.arrow_up);
         Bitmap arrow_up_bmp = Bitmap.createScaledBitmap(arrow_up.getBitmap(), 1920, 1920, false);
         Drawable arrow_up_done = new BitmapDrawable(getResources(), arrow_up_bmp);
@@ -84,7 +90,7 @@ public class GameScreenActivity extends AppCompatActivity {
         downArrow.setBackground(arrow_down_done);
         downArrow.getBackground().setAlpha(220);
 
-        // Timer shit
+        // Timer stuff
         runTimer();
         startTimer();
 
@@ -202,11 +208,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         //----
 
-
-
-        //hitBoxes for the imageViews
-        playerRect = new Rect();
-
+        // Initialize enemies
         footballers = new Footballer[] {new Footballer(0, 0, footballView1, 2),
                 new Footballer(0, 0, footballView2, 2),
                 new Footballer(0, 0, footballView3, 2),
@@ -227,9 +229,12 @@ public class GameScreenActivity extends AppCompatActivity {
         cops[5].getView().setVisibility(View.INVISIBLE);
         cops[6].getView().setVisibility(View.INVISIBLE);
 
+        //Initialize player hitbox
+        playerRect = new Rect();
 
         playerView.getHitRect(playerRect);
 
+        //Start everything
         fixBackground();
 
         startRunningPlayer();
@@ -242,185 +247,73 @@ public class GameScreenActivity extends AppCompatActivity {
         checkCollision();
 
     }
-    //Busted, dont touch
-    //Busted, dont touch
-    public void fixBackground(){
 
+    // Fix the background, duh
+    public void fixBackground(){
         BitmapDrawable field = (BitmapDrawable) getDrawable(R.drawable.field);
         Bitmap fieldFixed = Bitmap.createScaledBitmap(field.getBitmap(),1920,1080,false);
         Drawable fieldDone = new BitmapDrawable(getResources(), fieldFixed);
         ConstraintLayout gameScreen = findViewById(R.id.gameScreen);
 
         gameScreen.setBackground(fieldDone);
-
     }
 
+    // Spawn cops, duh
     public void spawnMoreCops(){
+        // The position in the array of the cop we're spawning
+        int thisCop = secs / copInterval;
 
-        int side = (int)(Math.random() * 2);
+        // Is it time to spawn a cop?
+        if(secs % copInterval == 0 && thisCop < cops.length && copsSpawned <= thisCop) {
+            // Set the spawn location of this cop
+            int side = (int) (Math.random() * 2);
+            int posDownSide = 60 + (int) (Math.random() * 850);
 
-        int posDownSide = 60 + (int)(Math.random() * 850);
-
-        if(secs > 10 && copsSpawned == 1){
-
-
-            if(side == 1) {
-                cops[1].setPosX(0);
-                cops[1].setPosY(posDownSide);
-                cops[1].setDirection(2);
+            // Make cop with patented Anti-Nate magic
+            if (side == 1) {
+                cops[thisCop].setPosX(0);
+                cops[thisCop].setPosY(posDownSide);
+                cops[thisCop].setDirection(2);
+            } else {
+                cops[thisCop].setPosX(1700);
+                cops[thisCop].setPosY(posDownSide);
+                cops[thisCop].setDirection(4);
             }
 
-            else{
-
-                cops[1].setPosX(1700);
-                cops[1].setPosY(posDownSide);
-                cops[1].setDirection(4);
-
-            }
-            cops[1].getView().setVisibility(View.VISIBLE);
-
+            cops[thisCop].getView().setVisibility(View.VISIBLE);
             copsSpawned++;
         }
-
-        if(secs > 20 && copsSpawned == 2){
-
-
-            if(side == 1) {
-                cops[2].setPosX(0);
-                cops[2].setPosY(posDownSide);
-                cops[2].setDirection(2);
-            }
-
-            else{
-
-                cops[2].setPosX(1700);
-                cops[2].setPosY(posDownSide);
-                cops[2].setDirection(4);
-
-            }
-            cops[2].getView().setVisibility(View.VISIBLE);
-
-            copsSpawned++;
-        }
-
-        if(secs > 30 && copsSpawned == 3){
-
-
-            if(side == 1) {
-                cops[3].setPosX(0);
-                cops[3].setPosY(posDownSide);
-                cops[3].setDirection(2);
-            }
-
-            else{
-
-                cops[3].setPosX(1700);
-                cops[3].setPosY(posDownSide);
-                cops[3].setDirection(4);
-
-            }
-            cops[3].getView().setVisibility(View.VISIBLE);
-
-            copsSpawned++;
-        }
-
-        if(secs > 40 && copsSpawned == 4){
-
-
-
-
-            if(side == 1) {
-                cops[4].setPosX(0);
-                cops[4].setPosY(posDownSide);
-                cops[4].setDirection(2);
-            }
-
-            else{
-
-                cops[4].setPosX(1700);
-                cops[4].setPosY(posDownSide);
-                cops[4].setDirection(4);
-
-            }
-            cops[4].getView().setVisibility(View.VISIBLE);
-
-            copsSpawned++;
-        }
-
-        if(secs > 50 && copsSpawned == 5){
-
-
-            if(side == 1) {
-                cops[5].setPosX(0);
-                cops[5].setPosY(posDownSide);
-                cops[5].setDirection(2);
-            }
-
-            else{
-
-                cops[5].setPosX(1700);
-                cops[5].setPosY(posDownSide);
-                cops[5].setDirection(4);
-
-            }
-            cops[5].getView().setVisibility(View.VISIBLE);
-
-            copsSpawned++;
-        }
-
-        if(secs > 60 && copsSpawned == 6){
-
-
-            if(side == 1) {
-                cops[6].setPosX(0);
-                cops[6].setPosY(posDownSide);
-                cops[6].setDirection(2);
-            }
-
-            else{
-
-                cops[6].setPosX(1700);
-                cops[6].setPosY(posDownSide);
-                cops[6].setDirection(4);
-
-            }
-            cops[6].getView().setVisibility(View.VISIBLE);
-
-            copsSpawned++;
-        }
-
-
     }
 
+    // Move enemies, duh
     public void moveEnemies(){
         final ImageView playerView = findViewById(R.id.playerImageView);
 
-        if(gameOn) {
-            final Handler handler = new Handler();
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
+        //Game better be on if we movin things
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
 
-                    if (gameOn) {
+                if (gameOn) {
 
-                        for (int i = 0; i < footballers.length; i++) {
-                            footballers[i].move();
-                        }
-
-                        for (int i = 0; i < cops.length; i++) {
-                            cops[i].move((int) playerView.getX(), (int) playerView.getY());
-                        }
-
-                        handler.postDelayed(this, 2);
+                    for (int i = 0; i < footballers.length; i++) {
+                        footballers[i].move();
                     }
+
+                    for (int i = 0; i < cops.length; i++) {
+                        cops[i].move((int) playerView.getX(), (int) playerView.getY());
+                    }
+
+                    handler.postDelayed(this, 2);
                 }
-            });
-        }
+            }
+        });
+
     }
 
+    // Spawn football player, duh
     public void spawnFootballPlayer(){
-
-
 
         if(gameOn) {
             final Handler handler = new Handler();
@@ -428,38 +321,34 @@ public class GameScreenActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-
-
+                    // Choose side to spawn on and generate number from 0 to 8
                     int side = (int)(Math.random() * 2);
-                    double randChance = Math.random();
-                    int randInt = (int) (randChance * 8);
+                    int randInt = (int) (Math.random() * 8);
 
+                    // If the number generated is 5 (???) spawn footballer
                     if(randInt == 5){
 
                         int yPos = 60 + (int)(Math.random() * 850);
 
                         if(side == 1) {
-
                             footballers[footballRotation].setPosX(0);
                             footballers[footballRotation].setDirection(2);
-
-                        }
-
-                        else{
-
+                        } else {
                             footballers[footballRotation].setPosX(1700);
                             footballers[footballRotation].setDirection(4);
-
                         }
+
                         footballers[footballRotation].setPosY(yPos);
 
+                        // footballRotation controls which footballer is being used,
+                        // so a currently running player isn't teleported
                         footballRotation++;
                         if(footballRotation > 3){
                             footballRotation = 0;
                         }
                     }
 
-
+                    // Try again every 0.5 seconds
                     handler.postDelayed(this, 500);
                 }
             });
@@ -468,6 +357,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
+    // Check collision, duh
     public void checkCollision(){
 
         final ImageView playerView = findViewById(R.id.playerImageView);
@@ -478,12 +368,12 @@ public class GameScreenActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-
-                    playerRect.set(playerRect.left-5, playerRect.top-5, playerRect.right-5, playerRect.bottom-5);
+                    // Reset player's hitbox
                     playerView.getHitRect(playerRect);
 
                     playerRect.set(playerRect.left+10, playerRect.top+10, playerRect.right-10, playerRect.bottom-10);
 
+                    // Check if collided with an active enemy
                     for(int i=0; i<footballers.length; i++){
                         if(footballers[i].checkIntersect(playerRect) &&
                                 footballers[i].getView().getVisibility() == View.VISIBLE){
@@ -498,10 +388,32 @@ public class GameScreenActivity extends AppCompatActivity {
                         }
                     }
 
-                    if(playerView.getY() < 60 || playerView.getY() > 900 || playerView.getX() < 10 || playerView.getX() > 1700){
-                        endGame();
+                    // If player is hitting wall, wall says no
+                    if(playerView.getY() < 60){
+
+                        stopRunningPlayer();
+                        playerView.setY(61);
                     }
 
+                    if(playerView.getY() > 900){
+
+                        stopRunningPlayer();
+                        playerView.setY(898);
+                    }
+
+                    if(playerView.getX() < 50){
+
+                        stopRunningPlayer();
+                        playerView.setX(51);
+                    }
+
+                    if(playerView.getX() > 1750){
+
+                        stopRunningPlayer();
+                        playerView.setX(1749);
+                    }
+
+                    // Turn cops around if they wander off
                     for(int i=0; i<cops.length; i++){
                         if(cops[i].getPosY() < 55){
                             cops[i].setDirection(1);
@@ -515,9 +427,7 @@ public class GameScreenActivity extends AppCompatActivity {
                         if(cops[i].getPosX() > 1705){
                             cops[i].setDirection(4);
                         }
-
-                        }
-
+                    }
 
                     spawnMoreCops();
 
@@ -527,6 +437,7 @@ public class GameScreenActivity extends AppCompatActivity {
         }
     }
 
+    // End the game, duh
     public void endGame(){
 
         if(timesEnded == 0) {
@@ -559,6 +470,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     }
 
+    // Go to the end screen
     public void endScreen(){
 
         Intent intent = new Intent(this, endgame_activity.class);
@@ -668,40 +580,6 @@ public class GameScreenActivity extends AppCompatActivity {
             });
         }
     }
-
-    //Change animations (DEVELOPER)
-
-    /*
-    public void devChangeAllUp(View v){
-
-        playerChangeAnimUp(v);
-        guardChangeAnimUp(v);
-        footballChangeAnimUp(v);
-    }
-
-    public void devChangeAllDown(View v){
-
-        playerChangeAnimDown(v);
-        guardChangeAnimDown(v);
-        footballChangeAnimDown(v);
-    }
-
-    public void devChangeAllLeft(View v){
-
-        playerChangeAnimLeft(v);
-        guardChangeAnimLeft(v);
-        footballChangeAnimLeft(v);
-    }
-
-    public void devChangeAllRight(View v){
-
-        playerChangeAnimRight(v);
-        guardChangeAnimRight(v);
-        footballChangeAnimRight(v);
-    }
-
-     */
-
 
     //Changes animations for the player
     public void playerChangeAnimUp(View v){
