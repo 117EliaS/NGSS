@@ -9,22 +9,6 @@
     android:orientation="horizontal"
     tools:context=".GameScreenActivity">
 
-    <Button
-        android:id="@+id/buttonUp"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:alpha="64"
-        android:background="@drawable/arrow_up"
-        android:onClick="changePlayerDirUp"
-        android:text=""
-        android:textSize="@dimen/menuFont"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781" />
-
     <!--  <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -42,6 +26,22 @@
 
 
     <Button
+        android:id="@+id/buttonUp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:alpha="64"
+        android:background="@drawable/arrow_up"
+        android:onClick="changePlayerDirUp"
+        android:text=""
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
         android:id="@+id/buttonLeft"
         android:layout_width="54dp"
         android:layout_height="54dp"
@@ -50,11 +50,11 @@
         android:text=""
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDown"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintTop_toTopOf="@+id/buttonDown"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonRight"
@@ -66,10 +66,10 @@
         android:textSize="@dimen/menuFont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonDown"
+        app:layout_constraintTop_toTopOf="@+id/buttonDown"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonDown"
@@ -245,17 +245,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/White"
+        android:background="#000000"
         android:fontFamily="@font/pixel"
         android:gravity="center|center_vertical"
-        android:text="00:00:00"
+        android:shadowColor="#FFFFFF"
 
+        android:shadowDy="0"
+        android:shadowRadius="0"
+        android:text="00:00:00"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="56sp"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:shadowDx="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
