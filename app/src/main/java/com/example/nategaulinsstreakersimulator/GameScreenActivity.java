@@ -421,10 +421,10 @@ public class GameScreenActivity extends AppCompatActivity {
                         if(cops[i].getPosY() > 905){
                             cops[i].setDirection(3);
                         }
-                        if(cops[i].getPosX() < -1){
+                        if(cops[i].getPosX() < 45){
                             cops[i].setDirection(2);
                         }
-                        if(cops[i].getPosX() > 1705){
+                        if(cops[i].getPosX() > 1755){
                             cops[i].setDirection(4);
                         }
                     }
