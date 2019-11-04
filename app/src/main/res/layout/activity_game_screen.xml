@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
- <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameScreenActivity"
-    android:orientation="horizontal"
     android:background="@drawable/field"
-    android:id="@+id/gameScreen">
-
-    <TextView
-        android:id="@+id/time_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/White"
-        android:text="00:00:00"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="56sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <!--  <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/menubutton"
-        android:onClick="stopTimer"
-        android:text="@string/devStop"
-        android:textSize="@dimen/menuFont"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601" />  -->
-
+    android:orientation="horizontal"
+    tools:context=".GameScreenActivity">
 
     <Button
         android:id="@+id/buttonUp"
@@ -57,6 +24,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.781" />
+
+    <!--  <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menubutton"
+        android:onClick="stopTimer"
+        android:text="@string/devStop"
+        android:textSize="@dimen/menuFont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.601" />  -->
+
 
     <Button
         android:id="@+id/buttonLeft"
@@ -116,7 +99,7 @@
         app:layout_constraintVertical_bias="0.4"
         tools:srcCompat="@drawable/player_down_1" />
 
-   <ImageView
+    <ImageView
         android:id="@+id/guardImageView1"
         android:layout_width="30dp"
         android:layout_height="45dp"
@@ -256,5 +239,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551"
         tools:srcCompat="@drawable/footballer_down_1" />
+
+    <TextView
+        android:id="@+id/time_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/White"
+        android:fontFamily="@font/pixel"
+        android:gravity="center|center_vertical"
+        android:text="00:00:00"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="56sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
