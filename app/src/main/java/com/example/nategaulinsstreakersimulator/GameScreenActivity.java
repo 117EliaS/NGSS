@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -48,13 +49,15 @@ public class GameScreenActivity extends AppCompatActivity {
     private int footballRotation = 0;
     private int timesEnded = 0;
     private String timeFormatted;
-
+    private View view;
     private int playerDirection = 3; //0 Up, 1 Down, 2 Left, 3 Right
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
+
 
         // Grab buttons
         Button upArrow = findViewById(R.id.buttonUp);
@@ -246,6 +249,37 @@ public class GameScreenActivity extends AppCompatActivity {
 
         checkCollision();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+            {
+                changePlayerDirRight(view);
+                return true;
+            }
+
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+            {
+                changePlayerDirLeft(view);
+                return true;
+            }
+
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+            {
+                changePlayerDirDown(view);
+                return true;
+            }
+
+            case KeyEvent.KEYCODE_DPAD_UP:
+            {
+                changePlayerDirUp(view);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     // Fix the background, duh
