@@ -232,6 +232,19 @@ public class GameScreenActivity extends AppCompatActivity {
         cops[5].getView().setVisibility(View.INVISIBLE);
         cops[6].getView().setVisibility(View.INVISIBLE);
 
+        cops[1].getView().setX(0);
+        cops[1].getView().setY(0);
+        cops[2].getView().setX(0);
+        cops[2].getView().setY(0);
+        cops[3].getView().setX(0);
+        cops[3].getView().setY(0);
+        cops[4].getView().setX(0);
+        cops[4].getView().setY(0);
+        cops[5].getView().setX(0);
+        cops[5].getView().setY(0);
+        cops[6].getView().setX(0);
+        cops[6].getView().setY(0);
+
         //Initialize player hitbox
         playerRect = new Rect();
 
@@ -303,19 +316,22 @@ public class GameScreenActivity extends AppCompatActivity {
             int side = (int) (Math.random() * 2);
             int posDownSide = 60 + (int) (Math.random() * 850);
 
-            // Make cop with patented Anti-Nate magic
-            if (side == 1) {
-                cops[thisCop].setPosX(0);
-                cops[thisCop].setPosY(posDownSide);
-                cops[thisCop].setDirection(2);
-            } else {
-                cops[thisCop].setPosX(1700);
-                cops[thisCop].setPosY(posDownSide);
-                cops[thisCop].setDirection(4);
-            }
+            if(cops[thisCop].getView().getVisibility() == View.INVISIBLE){
 
-            cops[thisCop].getView().setVisibility(View.VISIBLE);
-            copsSpawned++;
+                // Make cop with patented Anti-Nate magic
+                if (side == 1) {
+                    cops[thisCop].setPosX(0);
+                    cops[thisCop].setPosY(posDownSide);
+                    cops[thisCop].setDirection(2);
+                } else {
+                    cops[thisCop].setPosX(1700);
+                    cops[thisCop].setPosY(posDownSide);
+                    cops[thisCop].setDirection(4);
+                }
+
+                cops[thisCop].getView().setVisibility(View.VISIBLE);
+                copsSpawned++;
+            }
         }
     }
 
@@ -336,7 +352,9 @@ public class GameScreenActivity extends AppCompatActivity {
                     }
 
                     for (int i = 0; i < cops.length; i++) {
-                        cops[i].move((int) playerView.getX(), (int) playerView.getY());
+                        if (cops[i].getView().getVisibility() == View.VISIBLE) {
+                            cops[i].move((int) playerView.getX(), (int) playerView.getY());
+                        }
                     }
 
                     handler.postDelayed(this, 2);
